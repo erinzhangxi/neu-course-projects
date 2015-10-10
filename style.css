@@ -3,7 +3,17 @@ div {
 }
 
 h1 {
-    font-family: "Droid Serif";
+    font-family: "Dosis";
     font-size: 24px;
     color: blue;
+}
+
+#block1 {
+	width: 500;
+	height: 500;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #80E6FF;
+	opacity: .96;
 }
