@@ -1,19 +1,16 @@
 div {
     display: block; 
-}
-
-h1 {
-    font-family: "Dosis";
-    font-size: 24px;
-    color: blue;
-}
-
-nav {
-	width: 500;
+    width: 500;
 	height: 500;
 	position: absolute;
 	top: 0;
 	left: 0;
 	background-color: #80E6FF;
 	opacity: .96;
+}
+
+h1 {
+    font-family: "Dosis";
+    font-size: 24px;
+    color: blue;
 }
