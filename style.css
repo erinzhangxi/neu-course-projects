@@ -1,5 +1,5 @@
 body {
-    color: black;
+    color: #909090;
     font-family: 'Gotham SSm A','Gotham SSm B', sans-serif;
     font-size: 13px;
 }
@@ -20,7 +20,6 @@ body {
 
 #aboutMe {
 	text-align: center;
-	color: #909090;
 	font-size: 14px;
 	width: 100%;
 	margin-bottom: 2em;
