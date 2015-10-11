@@ -6,37 +6,10 @@ body {
 }
 
 #nav {
+	width: 100%;
 	position: relative;
 	background-color: #fff;
-}
-
-#nav ul {
-	width: 100%;
-	list-style-type: none;
-  	margin: 0;
-   	padding: 0;
-   	overflow: hidden;
-}
-
-#nav li {
-	float: left;
-}
-
-#nav li a:link, a:visited {
-   	display: block;
-   	width: 120px;
-   	font-weight: bold;
-   	color: #FFFFFF;
-   	background-color: #A6DCFF;
-   	text-align: center;
-   	padding: 4px;
-   	text-decoration: none;
-   	text-transform: uppercase;
-   	text-align: center;{
-}
-
-#nav li a:hover, a:active {
- 	background-color: #749AB2;
+	
 }
 
 #container {
