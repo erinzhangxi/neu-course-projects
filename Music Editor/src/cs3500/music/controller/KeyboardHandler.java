@@ -21,38 +21,53 @@ public class KeyboardHandler implements KeyListener {
 
   @Override
   public void keyTyped(KeyEvent e) {
-
+    int keyCode = e.getKeyCode();
+    if (keyTyped.containsKey(keyCode)) {
+      keyTyped.get(keyCode).run();
+    }
   }
 
   @Override
   public void keyPressed(KeyEvent e) {
-
+    int keyCode = e.getKeyCode();
+    if (keyPressed.containsKey(keyCode)) {
+      keyPressed.get(keyCode).run();
+    }
   }
 
   @Override
   public void keyReleased(KeyEvent e) {
-
+    int keyCode = e.getKeyCode();
+    if (keyReleased.containsKey(keyCode)) {
+      keyReleased.get(keyCode).run();
+    }
   }
 
   /**
    * add a key to the map of key typed commands
-   * @param e key event being added to the map
+   * @param key key event being added to the map
    * @param r the runnable corresponding to the key event
    */
-  public void addKeyTyped(KeyEvent e, Runnable r) {}
+  public void addKeyTyped(int key, Runnable r) {
+    this.keyTyped.put(key, r);
+  }
 
   /**
    * add a key to the map of key released commands
-   * @param e key event being added to the map
+   * @param key key event being added to the map
    * @param r the runnable corresponding to the key event
    */
-  public void addKeyReleased(KeyEvent e, Runnable r) {}
+  public void addKeyReleased(int key, Runnable r) {
+    this.keyReleased.put(key, r);
+  }
 
   /**
    * add a key to the map of key pressed commands
-   * @param e key event being added to the map
+   * @param key key event being added to the map
    * @param r the runnable corresponding to the key event
    */
-  public void addKeyPressed(KeyEvent e, Runnable r) {}
+  public void addKeyPressed(int key, Runnable r) {
+    this.keyPressed.put(key, r);
+  }
 
 }

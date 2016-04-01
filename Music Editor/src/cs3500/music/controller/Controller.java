@@ -1,7 +1,7 @@
 package cs3500.music.controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 
 import cs3500.music.model.MusicEditorModel;
 import cs3500.music.view.View;
@@ -16,8 +16,8 @@ public class Controller implements IController {
   public Controller(MusicEditorModel m, View v) {
     this.model = m;
     this.view = v;
-    configureKeyBoardListener();
-    this.view.addActionListener(this);
+    configureKeyBoardHandler();
+    //this.view.addActionListener(this);
   }
 
   /**
@@ -27,7 +27,12 @@ public class Controller implements IController {
    *
    * When user type
    */
-  private void configureKeyBoardListener() {
+  private void configureKeyBoardHandler() {
+    Map<Integer, Runnable> keyTyped = new HashMap<>();
+    Map<Integer, Runnable> keyPressed = new HashMap<>();
+    Map<Integer, Runnable> keyReleased = new HashMap<>();
+
+
 
   }
 
