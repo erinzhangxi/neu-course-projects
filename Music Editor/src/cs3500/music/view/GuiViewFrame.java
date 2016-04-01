@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.swing.*;
 
+import cs3500.music.controller.Controller;
 import cs3500.music.model.MusicEditorImpl;
 import cs3500.music.model.Note;
 

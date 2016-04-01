@@ -41,7 +41,7 @@ public class NoteImpl implements Note {
    *                   of (0, 126)
    * @param volume integer representing the volume
    */
-  public NoteImpl(Pitch pitch, int octave, int start, int end, int instrument, int volume) {
+  public NoteImpl(Pitch pitch, int octave, int start, int end, int instrument, int volume) {  // TODO change to private
 
     if (octave < -1 || octave > 10) {
       throw new IllegalArgumentException("Octave must be between 0 and 10.");

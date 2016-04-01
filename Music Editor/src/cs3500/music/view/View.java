@@ -1,5 +1,6 @@
 package cs3500.music.view;
 
+import cs3500.music.controller.Controller;
 import cs3500.music.model.MusicEditorImpl;
 
 /**
