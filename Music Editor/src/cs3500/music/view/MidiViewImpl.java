@@ -53,7 +53,7 @@ public class MidiViewImpl implements MidiView {
     } catch (MidiUnavailableException e) {
       e.printStackTrace();
     }
-
+//fghjkl
     this.synth = tempSyn;
     this.receiver = tempRec;
   }
@@ -167,7 +167,7 @@ public class MidiViewImpl implements MidiView {
   /**
    * mock the output of an actual MidiDevice
    *
-   * @return log that records every note's information
+   * log that records every note's information
    */
   public void mockOutput() throws InvalidMidiDataException, IOException {
 
