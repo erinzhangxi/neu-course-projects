@@ -20,4 +20,16 @@ public class CombinedViewImpl implements CombinedView {
     gui.display();
     midi.display();
   }
+
+  @Override
+  public void play() {
+    gui.play();
+    midi.play();
+  }
+
+  @Override
+  public void pause() {
+    gui.pause();
+    midi.pause();
+  }
 }
