@@ -32,32 +32,32 @@ public class CombinedViewImpl implements CombinedView {
 
   @Override
   public void end() {
-    this.gui.pause();
+    this.gui.end();
   }
 
   @Override
   public void home() {
-    this.gui.pause();
+    this.gui.home();
   }
 
   @Override
   public void scrollUp() {
-    this.gui.pause();
+    this.gui.scrollUp();
   }
 
   @Override
   public void scrollDown() {
-    this.gui.pause();
+    this.gui.scrollDown();
   }
 
   @Override
   public void scrollLeft() {
-    this.gui.pause();
+    this.gui.scrollLeft();
   }
 
   @Override
   public void scrollRight() {
-    this.gui.pause();
+    this.gui.scrollRight();
   }
 
   @Override

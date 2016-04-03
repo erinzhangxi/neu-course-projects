@@ -108,6 +108,9 @@ public class GuiViewFrame extends JFrame implements GuiView {
   public void setKeyboardListener(KeyboardHandler key) {
     this.keyboard = key;
     this.displayPanel.addKeyListener(keyboard);
-
   }
+
+  // TODO WHY??
+  public void removeMouseHandler(MouseHandler mouse) {}
+
 }

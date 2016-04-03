@@ -53,7 +53,6 @@ public class MidiViewImpl implements MidiView {
     } catch (MidiUnavailableException e) {
       e.printStackTrace();
     }
-//fghjkl
     this.synth = tempSyn;
     this.receiver = tempRec;
   }
@@ -122,8 +121,6 @@ public class MidiViewImpl implements MidiView {
 //    }
 //  }
 
-
-
     /**
    * plays a specific note at a given beat and a given pitch
    *
@@ -146,7 +143,6 @@ public class MidiViewImpl implements MidiView {
         }
         else if (i == note.getEndBeat()) {
           this.receiver.send(stop, -1);
-
         }
       }
       Thread.sleep(model.getTempo() / 1000);
