@@ -164,6 +164,7 @@ public class MidiViewImpl implements MidiView {
     this.receiver.close(); // Only call this once you're done playing *all* notes
   }
 
+
   /**
    * mock the output of an actual MidiDevice
    *

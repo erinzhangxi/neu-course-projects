@@ -45,4 +45,5 @@ public class ConsoleViewImpl implements View {
   public void display() {
     System.out.println(model.renderSong());
   }
+
 }
