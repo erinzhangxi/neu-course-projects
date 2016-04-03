@@ -11,4 +11,6 @@ public interface View {
    * Display a view of a music editor starting at a given beat
    */
   void display() throws InterruptedException;
+
+  void pause();
 }

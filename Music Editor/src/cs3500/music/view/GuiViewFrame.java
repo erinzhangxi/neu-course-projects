@@ -54,6 +54,7 @@ public class GuiViewFrame extends JFrame implements GuiView {
   public MusicEditorImpl getModelFromFrame() {
     return new MusicEditorImpl(model.getAll());
   }
+
   @Override
   public void display(){
     this.setVisible(true);
@@ -99,13 +100,14 @@ public class GuiViewFrame extends JFrame implements GuiView {
             + this.scroll.getHorizontalScrollBar().getUnitIncrement());
   }
 
-  public void setMouseHandler(MouseHandler mouse) {
+  @Override
+  public void addMouseListener(MouseHandler mouse) {
     this.mouse = mouse;
     this.displayPanel.addMouseListener(mouse);
   }
 
   @Override
-  public void setKeyboardListener(KeyboardHandler key) {
+  public void addKeyboardListener(KeyboardHandler key) {
     this.keyboard = key;
     this.displayPanel.addKeyListener(keyboard);
   }

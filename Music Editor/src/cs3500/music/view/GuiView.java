@@ -1,13 +1,18 @@
 package cs3500.music.view;
 
 import cs3500.music.controller.KeyboardHandler;
+import cs3500.music.controller.MouseHandler;
 
 /**
  * Created by ErinZhang on 3/17/16.
  */
 public interface GuiView extends View {
 
+  @Override
   void pause();
+  @Override
+  void display() throws InterruptedException;
+
   void end();
   void home();
   void scrollUp();
@@ -15,5 +20,7 @@ public interface GuiView extends View {
   void scrollLeft();
   void scrollRight();
 
-  void setKeyboardListener(KeyboardHandler key);
+
+  void addKeyboardListener(KeyboardHandler key);
+  void addMouseListener(MouseHandler mouse);
 }

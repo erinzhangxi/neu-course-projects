@@ -61,13 +61,13 @@ public class CombinedViewImpl implements CombinedView {
   }
 
   @Override
-  public void setKeyboardListener(KeyboardHandler key) {
+  public void addKeyboardListener(KeyboardHandler key) {
     this.keyboard = key;
-    this.gui.setKeyboardListener(keyboard);
+    this.gui.addKeyboardListener(keyboard);
   }
 
-  public void setMouseHandler(MouseHandler mouse) {
+  public void addMouseListener(MouseHandler mouse) {
     this.mouse = mouse;
-    this.gui.setMouseHandler(mouse);
+    this.gui.addMouseListener(mouse);
   }
 }

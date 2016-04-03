@@ -149,6 +149,11 @@ public class MidiViewImpl implements MidiView {
     }
   }
 
+  //TODO
+  @Override
+  public void pause() {
+
+  }
 
   @Override
   public void display() throws InterruptedException {

@@ -46,4 +46,8 @@ public class ConsoleViewImpl implements View {
     System.out.println(model.renderSong());
   }
 
+  @Override
+  public void pause() {
+
+  }
 }
