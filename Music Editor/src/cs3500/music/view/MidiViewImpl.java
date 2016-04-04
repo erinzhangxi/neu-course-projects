@@ -148,6 +148,58 @@ public class MidiViewImpl implements MidiView {
     log.append(mockRec.result.toString());
   }
 
+  //TODO
+  @Override
+  public void pause() {
+    this.paused = !paused;
+    if (paused == true) {
+
+    }
+    else {
+
+    }
+  }
+
+  /**
+   * @throws InterruptedException
+   */
+  @Override
+  public void display() throws InterruptedException {
+    this.initTimer();
+    }
+
+  /**
+   * initialize the timer by setting the task to be scheduled and
+   * the time in milliseconds between successive task executions.
+   */
+  public void initTimer() {
+    timer = new Timer();
+    timer.schedule(new Task(), 0, model.getTempo() / 1000);
+    // this.receiver.close(); // Only call this once you're done playing *all* notes
+  }
+
+
+  class Task extends TimerTask {
+    // the actual action to be performed
+    public void run() {
+      if (!paused) {
+        // play the current beat you're on
+
+        try {
+          if (curBeat <= model.getHighBeat()) {
+            playNotesAtBeat(curBeat);
+          }
+        } catch (Exception e) {
+
+        }
+
+        // increment the current beat
+        curBeat++;
+      }
+    }
+  }
+
+    // TODO commented out
   /**
    * plays notes starting at a specific time
    *
@@ -177,72 +229,26 @@ public class MidiViewImpl implements MidiView {
 //    }
 //  }
 
-  public void playNotesAtBeat(int curBeat) throws InvalidMidiDataException, InterruptedException {
-    List<Note> notes = this.model.getNotesAtBeat(curBeat);
-    for (int i = 0; i < notes.size(); i++) {
-      Note note = notes.get(i);
+  public void playNotesAtBeat(int beat) throws InvalidMidiDataException {
+      List<Note> notes = this.model.getNotesAtBeat(beat);
 
-      MidiMessage start = new ShortMessage(ShortMessage.NOTE_ON, note.getInstrument(),
-              note.getPitchIdx(), note.getVolume());
-      MidiMessage stop = new ShortMessage(ShortMessage.NOTE_OFF, note.getInstrument(),
-              note.getPitchIdx(), note.getVolume());
+      for (int i = 0; i < notes.size(); i++) {
+        Note note = notes.get(i);
 
-      if (i == note.getStartBeat()) {
-        this.receiver.send(start, -1);
+        MidiMessage start = new ShortMessage(ShortMessage.NOTE_ON, note.getInstrument(),
+                note.getPitchIdx(), note.getVolume());
+        MidiMessage stop = new ShortMessage(ShortMessage.NOTE_OFF, note.getInstrument(),
+                note.getPitchIdx(), note.getVolume());
+
+       // this.receiver.send(start, -1);
+        //this.receiver.send(stop, -1);
+        this.receiver.send(start, this.synth.getMicrosecondPosition());
+        this.receiver.send(stop, this.synth.getMicrosecondPosition() +
+                (note.getEndBeat() - note.getStartBeat()) * model.getTempo());
 
       }
-      else if (i == note.getEndBeat()) {
-        this.receiver.send(stop, -1);
-      }
-    }
   }
 
-  // TODO
-  @Override
-  public void pause() {
-    this.paused = !paused;
-    if (paused == true) {
 
-    }
-    else {
-
-    }
-  }
-
-  /**
-   * @throws InterruptedException
-   */
-  @Override
-  public void display() throws InterruptedException {
-    this.initTimer();
-    }
-
-  /**
-   * initialize the timer by setting the task to be scheduled and
-   * the time in milliseconds between successive task executions.
-   */
-  public void initTimer() {
-    timer = new Timer();
-    timer.schedule(new Task(), model.getTempo() / 1000);
-    // this.receiver.close(); // Only call this once you're done playing *all* notes
-  }
-
-  class Task extends TimerTask {
-    // the actual action to be performed
-    public void run() {
-      if (!paused) {
-        // play the current beat you're on
-        try {
-          playNotesAtBeat(curBeat);
-        } catch (InvalidMidiDataException e) {
-          e.printStackTrace();
-        } catch (InterruptedException e) {
-          e.printStackTrace();
-        }
-        // increment the current beat
-        curBeat++;
-      }
-    }
-  }
 }
 
