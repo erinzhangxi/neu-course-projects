@@ -12,5 +12,4 @@ public interface MidiView extends View {
   void pause();
   @Override
   void display() throws InterruptedException;
-
 }

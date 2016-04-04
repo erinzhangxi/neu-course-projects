@@ -2,13 +2,10 @@ package cs3500.music.view;
 
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.MouseListener; // Possibly of interest for handling mouse events
+
 import java.util.*;
 import java.util.List;
 
-import javax.swing.*;
-
-import cs3500.music.controller.Controller;
 import cs3500.music.controller.KeyboardHandler;
 import cs3500.music.controller.MouseHandler;
 import cs3500.music.model.MusicEditorImpl;
@@ -25,7 +22,7 @@ public class GuiViewFrame extends JFrame implements GuiView {
   private JScrollPane scroll;
   private KeyboardHandler keyboard = new KeyboardHandler();
   private MouseHandler mouse = new MouseHandler();
-  private boolean pause = false;
+  public boolean paused = false;
 
   /**
    * Creates a new GuiView
@@ -62,7 +59,7 @@ public class GuiViewFrame extends JFrame implements GuiView {
 
   @Override
   public void pause() {
-    pause = !pause;
+    paused = !paused;
   }
 
   @Override

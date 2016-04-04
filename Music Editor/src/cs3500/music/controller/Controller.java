@@ -34,7 +34,7 @@ public class Controller implements IController {
     Map<Integer, Runnable> keyReleased = new HashMap<>();
 
     // play back
-    keyPressed.put(KeyEvent.VK_SPACE, () -> { this.view.pause(); });
+    keyPressed.put(KeyEvent.VK_SPACE, () -> { this.view.pause();});
     keyPressed.put(KeyEvent.VK_END, () -> { this.view.end(); });
 
     // scroll commands

@@ -19,8 +19,6 @@ public interface GuiView extends View {
   void scrollDown();
   void scrollLeft();
   void scrollRight();
-
-
   void addKeyboardListener(KeyboardHandler key);
   void addMouseListener(MouseHandler mouse);
 }
