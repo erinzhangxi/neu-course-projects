@@ -150,6 +150,7 @@ public class MidiViewImpl implements MidiView {
 
   @Override
   public void pause() throws InvalidMidiDataException {
+    System.out.println("paused() in midiView");  // TODO
     this.paused = !paused;
     // resume playing music
     if (paused == false) {
@@ -164,8 +165,16 @@ public class MidiViewImpl implements MidiView {
       }
     }
     // pause the music
-    else {
-
+    else { // TODO
+      if (curBeat <= model.getHighBeat()) {
+        for (Note n : model.getNotesAtBeat(curBeat)) {
+          if (n.getStartBeat() <= curBeat && n.getEndBeat() >= curBeat) {
+            MidiMessage start = new ShortMessage(ShortMessage.NOTE_OFF, n.getInstrument(),
+                    n.getPitchIdx(), n.getVolume());
+            this.receiver.send(start, -1);
+          }
+        }
+      }
     }
   }
 

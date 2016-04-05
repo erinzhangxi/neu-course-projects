@@ -47,7 +47,6 @@ public class GuiViewFrame extends JFrame implements GuiView {
     return new Dimension(1300, 800);
   }
 
-
   public MusicEditorImpl getModelFromFrame() {
     return new MusicEditorImpl(model.getAll());
   }
@@ -77,7 +76,6 @@ public class GuiViewFrame extends JFrame implements GuiView {
   public void scrollUp() {
      this.scroll.getVerticalScrollBar().setValue(this.scroll.getVerticalScrollBar().getValue()
              - this.scroll.getVerticalScrollBar().getUnitIncrement());
-    System.out.println("scroll up");
   }
 
   @Override

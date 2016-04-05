@@ -39,22 +39,20 @@ public class Controller implements IController {
    */
   private void configureKeyBoardHandler() {
     // play back
-    keyboard.addKeyTyped(KeyEvent.VK_SPACE, () -> {
+    keyboard.addKeyPressed(KeyEvent.VK_SPACE, () -> {
       try {
         this.view.pause();
       } catch (InvalidMidiDataException e) {
         e.printStackTrace();
       }
     });
-    keyboard.addKeyTyped(KeyEvent.VK_END, () -> this.view.end());
-
+    keyboard.addKeyPressed(KeyEvent.VK_ENTER, new End());
+    keyboard.addKeyPressed(KeyEvent.VK_H, new Home());
     // scroll commands
-    keyboard.addKeyTyped(KeyEvent.VK_UP, () -> this.view.scrollUp());
-    keyboard.addKeyTyped(KeyEvent.VK_DOWN, () -> this.view.scrollDown());
-    keyboard.addKeyTyped(KeyEvent.VK_LEFT, () -> this.view.scrollLeft());
-    keyboard.addKeyTyped(KeyEvent.VK_RIGHT, () -> this.view.scrollRight());
-    keyboard.addKeyTyped(KeyEvent.VK_DELETE, () -> this.view.home());
-    keyboard.addKeyTyped(KeyEvent.VK_ENTER, () -> this.view.end());
+    keyboard.addKeyPressed(KeyEvent.VK_UP, () -> this.view.scrollUp());
+    keyboard.addKeyPressed(KeyEvent.VK_DOWN, () -> this.view.scrollDown());
+    keyboard.addKeyPressed(KeyEvent.VK_LEFT, () -> this.view.scrollLeft());
+    keyboard.addKeyPressed(KeyEvent.VK_RIGHT, () -> this.view.scrollRight());
 
     this.view.addKeyboardListener(this.keyboard);
     // addNote command
@@ -62,6 +60,19 @@ public class Controller implements IController {
     // removeNote command
     // editNote command
 
+  }
+
+  class End implements Runnable {
+    // make a mock constructor that returns string
+    public void run() {
+      view.end();
+    }
+  }
+
+  class Home implements Runnable {
+    public void run() {
+      view.home();
+    }
   }
 
 }

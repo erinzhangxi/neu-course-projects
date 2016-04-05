@@ -23,6 +23,5 @@ public interface GuiView extends View {
   void scrollRight();
   void addKeyboardListener(KeyboardHandler key);
   void addMouseListener(MouseHandler mouse);
-
   void resetFocus();
 }
