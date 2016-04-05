@@ -6,12 +6,15 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import javax.sound.midi.InvalidMidiDataException;
+
+import cs3500.music.controller.Controller;
 import cs3500.music.model.MusicEditorImpl;
 import cs3500.music.model.MusicEditorModel;
 import cs3500.music.model.Note;
 import cs3500.music.model.Pitch;
 import cs3500.music.util.CompositionBuilder;
 import cs3500.music.util.MusicReader;
+import cs3500.music.view.GuiView;
 import cs3500.music.view.GuiViewFrame;
 import cs3500.music.view.MidiViewImpl;
 import cs3500.music.view.View;
@@ -43,7 +46,10 @@ public class MusicEditor {
 
     MusicEditorModel model = builder.build();
     View view = ViewCreator.create(type, (MusicEditorImpl) model);
-
     view.display();
+
+    GuiView guiview = new GuiViewFrame((MusicEditorImpl) model);
+    Controller controller = new Controller(model, guiview);
+
   }
 }

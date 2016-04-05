@@ -14,11 +14,17 @@ import cs3500.music.view.View;
 public class Controller implements IController {
   private MusicEditorModel model;
   private GuiView view;
+  private KeyboardHandler keyboard;
+  private MouseHandler mouse;
 
   public Controller(MusicEditorModel m, GuiView v) {
     this.model = m;
     this.view = v;
+    keyboard = new KeyboardHandler();
+    mouse = new MouseHandler();
     configureKeyBoardHandler();
+
+    this.view.addMouseListener(this.mouse);
   }
 
   /**
@@ -29,21 +35,22 @@ public class Controller implements IController {
    *
    */
   private void configureKeyBoardHandler() {
-    Map<Integer, Runnable> keyTyped = new HashMap<>();
-    Map<Integer, Runnable> keyPressed = new HashMap<>();
-    Map<Integer, Runnable> keyReleased = new HashMap<>();
+//    Map<Integer, Runnable> keyTyped = new HashMap<>();
+//    Map<Integer, Runnable> keyPressed = new HashMap<>();
+//    Map<Integer, Runnable> keyReleased = new HashMap<>();
 
     // play back
-    keyPressed.put(KeyEvent.VK_SPACE, () -> { this.view.pause();});
-    keyPressed.put(KeyEvent.VK_END, () -> { this.view.end(); });
+    keyboard.addKeyPressed(KeyEvent.VK_SPACE, () -> this.view.pause());
+    keyboard.addKeyPressed(KeyEvent.VK_END, () -> this.view.end());
 
     // scroll commands
-    keyPressed.put(KeyEvent.VK_HOME, () -> { this.view.home(); });
-    keyPressed.put(KeyEvent.VK_UP, () -> { this.view.scrollUp(); });
-    keyPressed.put(KeyEvent.VK_DOWN, () -> { this.view.scrollDown(); });
-    keyPressed.put(KeyEvent.VK_LEFT, () -> { this.view.scrollLeft(); });
-    keyPressed.put(KeyEvent.VK_RIGHT, () -> { this.view.scrollRight(); });
+    keyboard.addKeyPressed(KeyEvent.VK_HOME, () -> this.view.home());
+    keyboard.addKeyPressed(KeyEvent.VK_UP, () -> this.view.scrollUp());
+    keyboard.addKeyPressed(KeyEvent.VK_DOWN, () -> this.view.scrollDown());
+    keyboard.addKeyPressed(KeyEvent.VK_LEFT, () -> this.view.scrollLeft());
+    keyboard.addKeyPressed(KeyEvent.VK_RIGHT, () -> this.view.scrollRight());
 
+    this.view.addKeyboardListener(this.keyboard);
     // addNote command
 
     // removeNote command

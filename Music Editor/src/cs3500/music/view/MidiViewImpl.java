@@ -148,13 +148,22 @@ public class MidiViewImpl implements MidiView {
     log.append(mockRec.result.toString());
   }
 
-  //TODO
   @Override
-  public void pause() {
+  public void pause() throws InvalidMidiDataException {
     this.paused = !paused;
-    if (paused == true) {
-
+    // resume playing music
+    if (paused == false) {
+      if (curBeat <= model.getHighBeat()) {
+        for (Note n : model.getNotesAtBeat(curBeat)) {
+          if (n.getStartBeat() <= curBeat && n.getEndBeat() >= curBeat) {
+            MidiMessage start = new ShortMessage(ShortMessage.NOTE_ON, n.getInstrument(),
+                    n.getPitchIdx(), n.getVolume());
+            this.receiver.send(start, -1);
+          }
+        }
+      }
     }
+    // pause the music
     else {
 
     }
@@ -178,13 +187,11 @@ public class MidiViewImpl implements MidiView {
     // this.receiver.close(); // Only call this once you're done playing *all* notes
   }
 
-
   class Task extends TimerTask {
     // the actual action to be performed
     public void run() {
       if (!paused) {
         // play the current beat you're on
-
         try {
           if (curBeat <= model.getHighBeat()) {
             playNotesAtBeat(curBeat);
@@ -192,43 +199,18 @@ public class MidiViewImpl implements MidiView {
         } catch (Exception e) {
 
         }
-
         // increment the current beat
         curBeat++;
       }
     }
   }
 
-    // TODO commented out
   /**
    * plays notes starting at a specific time
    *
    * @throws InvalidMidiDataException
    * @throws InterruptedException
    */
-//  public void playNotes() throws InvalidMidiDataException, InterruptedException {
-//
-//   // for (int i = model.getLowBeat(); i < model.getHighBeat(); i++) { TODO
-//    for (int i = this.curBeat; i < model.getHighBeat(); i++) {
-//      for (Note note : model.getAll()) {
-//
-//        MidiMessage start = new ShortMessage(ShortMessage.NOTE_ON, note.getInstrument(),
-//                note.getPitchIdx(), note.getVolume());
-//        MidiMessage stop = new ShortMessage(ShortMessage.NOTE_OFF, note.getInstrument(),
-//                note.getPitchIdx(), note.getVolume());
-//
-//        if (i == note.getStartBeat()) {
-//          this.receiver.send(start, -1);
-//
-//        }
-//        else if (i == note.getEndBeat()) {
-//          this.receiver.send(stop, -1);
-//        }
-//      }
-//     // Thread.sleep(model.getTempo() / 1000);
-//    }
-//  }
-
   public void playNotesAtBeat(int beat) throws InvalidMidiDataException {
       List<Note> notes = this.model.getNotesAtBeat(beat);
 
@@ -245,10 +227,7 @@ public class MidiViewImpl implements MidiView {
         this.receiver.send(start, this.synth.getMicrosecondPosition());
         this.receiver.send(stop, this.synth.getMicrosecondPosition() +
                 (note.getEndBeat() - note.getStartBeat()) * model.getTempo());
-
       }
   }
-
-
 }
 

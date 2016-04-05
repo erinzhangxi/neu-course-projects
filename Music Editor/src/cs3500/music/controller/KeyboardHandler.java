@@ -9,37 +9,48 @@ import java.util.Map;
  * Created by ErinZhang on 3/31/16.
  */
 public class KeyboardHandler implements KeyListener {
-  Map<Integer, Runnable> keyTyped;
-  Map<Integer, Runnable> keyPressed;
-  Map<Integer, Runnable> keyReleased;
+  Map<Integer, Runnable> keyTypedMap;
+  Map<Integer, Runnable> keyPressedMap;
+  Map<Integer, Runnable> keyReleasedMap;
 
   public KeyboardHandler() {
-    this.keyTyped = new HashMap<>();
-    this.keyPressed = new HashMap<>();
-    this.keyReleased = new HashMap<>();
+    this.keyTypedMap = new HashMap<>();
+    this.keyPressedMap = new HashMap<>();
+    this.keyReleasedMap = new HashMap<>();
   }
+
+//  public void setKeyTypedMap(Map<Integer, Runnable> map) {
+//    keyTypedMap = map;
+//  }
+//
+//  public void setKeyPressedMap(Map<Integer, Runnable> map) {
+//    keyPressedMap = map;
+//  }
+//  public void setKeyReleasedMap(Map<Integer, Runnable> map) {
+//    keyReleasedMap = map;
+//  }
 
   @Override
   public void keyTyped(KeyEvent e) {
     int keyCode = e.getKeyCode();
-    if (keyTyped.containsKey(keyCode)) {
-      keyTyped.get(keyCode).run();
+    if (keyTypedMap.containsKey(keyCode)) {
+      keyTypedMap.get(keyCode).run();
     }
   }
 
   @Override
   public void keyPressed(KeyEvent e) {
     int keyCode = e.getKeyCode();
-    if (keyPressed.containsKey(keyCode)) {
-      keyPressed.get(keyCode).run();
+    if (keyPressedMap.containsKey(keyCode)) {
+      keyPressedMap.get(keyCode).run();
     }
   }
 
   @Override
   public void keyReleased(KeyEvent e) {
     int keyCode = e.getKeyCode();
-    if (keyReleased.containsKey(keyCode)) {
-      keyReleased.get(keyCode).run();
+    if (keyReleasedMap.containsKey(keyCode)) {
+      keyReleasedMap.get(keyCode).run();
     }
   }
 
@@ -49,7 +60,7 @@ public class KeyboardHandler implements KeyListener {
    * @param r the runnable corresponding to the key event
    */
   public void addKeyTyped(int key, Runnable r) {
-    this.keyTyped.put(key, r);
+    this.keyTypedMap.put(key, r);
   }
 
   /**
@@ -58,7 +69,7 @@ public class KeyboardHandler implements KeyListener {
    * @param r the runnable corresponding to the key event
    */
   public void addKeyReleased(int key, Runnable r) {
-    this.keyReleased.put(key, r);
+    this.keyReleasedMap.put(key, r);
   }
 
   /**
@@ -67,7 +78,7 @@ public class KeyboardHandler implements KeyListener {
    * @param r the runnable corresponding to the key event
    */
   public void addKeyPressed(int key, Runnable r) {
-    this.keyPressed.put(key, r);
+    this.keyPressedMap.put(key, r);
   }
 
 }

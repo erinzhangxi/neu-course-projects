@@ -1,5 +1,7 @@
 package cs3500.music.view;
 
+import javax.sound.midi.InvalidMidiDataException;
+
 import cs3500.music.controller.Controller;
 import cs3500.music.model.MusicEditorImpl;
 
@@ -12,5 +14,5 @@ public interface View {
    */
   void display() throws InterruptedException;
 
-  void pause();
+  void pause() throws InvalidMidiDataException;
 }
