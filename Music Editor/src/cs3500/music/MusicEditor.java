@@ -45,11 +45,9 @@ public class MusicEditor {
     }
 
     MusicEditorModel model = builder.build();
-    View view = ViewCreator.create(type, (MusicEditorImpl) model);
-    view.display();
+ //   View view = ViewCreator.create(type, (MusicEditorImpl) model);
 
     GuiView guiview = new GuiViewFrame((MusicEditorImpl) model);
     Controller controller = new Controller(model, guiview);
-
   }
 }

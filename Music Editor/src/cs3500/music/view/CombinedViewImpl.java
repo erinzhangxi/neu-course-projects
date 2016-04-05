@@ -70,4 +70,9 @@ public class CombinedViewImpl implements CombinedView {
     this.mouse = mouse;
     this.gui.addMouseListener(mouse);
   }
+
+  @Override
+  public void resetFocus() {
+    gui.resetFocus();
+  }
 }

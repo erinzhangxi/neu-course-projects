@@ -77,6 +77,7 @@ public class GuiViewFrame extends JFrame implements GuiView {
   public void scrollUp() {
      this.scroll.getVerticalScrollBar().setValue(this.scroll.getVerticalScrollBar().getValue()
              - this.scroll.getVerticalScrollBar().getUnitIncrement());
+    System.out.println("scroll up");
   }
 
   @Override
@@ -107,6 +108,11 @@ public class GuiViewFrame extends JFrame implements GuiView {
   public void addKeyboardListener(KeyboardHandler key) {
     this.keyboard = key;
     this.displayPanel.addKeyListener(keyboard);
+  }
+
+  public void resetFocus() {
+    displayPanel.setFocusable(true);
+    displayPanel.requestFocus();
   }
 
   // TODO WHY??

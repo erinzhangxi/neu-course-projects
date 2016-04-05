@@ -19,17 +19,6 @@ public class KeyboardHandler implements KeyListener {
     this.keyReleasedMap = new HashMap<>();
   }
 
-//  public void setKeyTypedMap(Map<Integer, Runnable> map) {
-//    keyTypedMap = map;
-//  }
-//
-//  public void setKeyPressedMap(Map<Integer, Runnable> map) {
-//    keyPressedMap = map;
-//  }
-//  public void setKeyReleasedMap(Map<Integer, Runnable> map) {
-//    keyReleasedMap = map;
-//  }
-
   @Override
   public void keyTyped(KeyEvent e) {
     int keyCode = e.getKeyCode();
