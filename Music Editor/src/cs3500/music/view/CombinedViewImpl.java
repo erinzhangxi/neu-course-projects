@@ -1,5 +1,7 @@
 package cs3500.music.view;
 
+import javax.sound.midi.InvalidMidiDataException;
+
 import cs3500.music.controller.KeyboardHandler;
 import cs3500.music.controller.MouseHandler;
 import cs3500.music.model.MusicEditorImpl;
@@ -27,7 +29,11 @@ public class CombinedViewImpl implements CombinedView {
 
   @Override
   public void pause() {
-    this.gui.pause();
+    try {
+      this.midi.pause();
+    } catch (InvalidMidiDataException e) {
+      e.printStackTrace();
+    }
   }
 
   @Override

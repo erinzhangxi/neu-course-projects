@@ -4,6 +4,8 @@ import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.sound.midi.InvalidMidiDataException;
+
 import cs3500.music.model.MusicEditorModel;
 import cs3500.music.view.CombinedView;
 import cs3500.music.view.GuiView;
@@ -37,11 +39,16 @@ public class Controller implements IController {
    */
   private void configureKeyBoardHandler() {
     // play back
-    keyboard.addKeyTyped(KeyEvent.VK_SPACE, () -> this.view.pause());
+    keyboard.addKeyTyped(KeyEvent.VK_SPACE, () -> {
+      try {
+        this.view.pause();
+      } catch (InvalidMidiDataException e) {
+        e.printStackTrace();
+      }
+    });
     keyboard.addKeyTyped(KeyEvent.VK_END, () -> this.view.end());
 
     // scroll commands
-    keyboard.addKeyTyped(KeyEvent.VK_HOME, () -> this.view.home());
     keyboard.addKeyTyped(KeyEvent.VK_UP, () -> this.view.scrollUp());
     keyboard.addKeyTyped(KeyEvent.VK_DOWN, () -> this.view.scrollDown());
     keyboard.addKeyTyped(KeyEvent.VK_LEFT, () -> this.view.scrollLeft());

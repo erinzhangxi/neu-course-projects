@@ -14,6 +14,7 @@ import cs3500.music.model.Note;
 import cs3500.music.model.Pitch;
 import cs3500.music.util.CompositionBuilder;
 import cs3500.music.util.MusicReader;
+import cs3500.music.view.CombinedView;
 import cs3500.music.view.GuiView;
 import cs3500.music.view.GuiViewFrame;
 import cs3500.music.view.MidiViewImpl;
@@ -45,9 +46,10 @@ public class MusicEditor {
     }
 
     MusicEditorModel model = builder.build();
- //   View view = ViewCreator.create(type, (MusicEditorImpl) model);
+    View view = ViewCreator.create(type, (MusicEditorImpl) model);
 
     GuiView guiview = new GuiViewFrame((MusicEditorImpl) model);
-    Controller controller = new Controller(model, guiview);
+    Controller controller = new Controller(model, (CombinedView) view);
+    // TODO how to input other views
   }
 }

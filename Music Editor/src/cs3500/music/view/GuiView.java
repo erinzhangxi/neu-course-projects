@@ -1,5 +1,7 @@
 package cs3500.music.view;
 
+import javax.sound.midi.InvalidMidiDataException;
+
 import cs3500.music.controller.KeyboardHandler;
 import cs3500.music.controller.MouseHandler;
 
@@ -9,7 +11,7 @@ import cs3500.music.controller.MouseHandler;
 public interface GuiView extends View {
 
   @Override
-  void pause();
+  void pause() throws InvalidMidiDataException;
   @Override
   void display() throws InterruptedException;
 
