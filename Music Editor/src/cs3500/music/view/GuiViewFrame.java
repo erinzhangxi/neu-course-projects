@@ -23,6 +23,7 @@ public class GuiViewFrame extends JFrame implements GuiView {
   private KeyboardHandler keyboard = new KeyboardHandler();
   private MouseHandler mouse = new MouseHandler();
   public boolean paused = false;
+  public ConcreteGuiViewPanel.MyLine line;
 
   /**
    * Creates a new GuiView
@@ -35,6 +36,13 @@ public class GuiViewFrame extends JFrame implements GuiView {
     this.getContentPane().add(scroll);
     this.pack();
     this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    line =  displayPanel.getLine();
+  }
+
+  public void nextWindowIfEnd() {
+    if (line.beginX % 1300 == 0) {
+      this.scroll.getHorizontalScrollBar().setValue(1300 * (line.beginX / 1300));
+    }
   }
 
   /**

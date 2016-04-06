@@ -122,11 +122,12 @@ public class CombinedViewImpl implements CombinedView {
 
         gui.getPanel().getLine().moveLine();
         gui.repaint();
+        gui.nextWindowIfEnd();
         // increment the current beat
         curBeat++;
       }
       else {
-        pause();  
+        pause();
       }
     }
 
