@@ -2,8 +2,6 @@ package cs3500.music.view;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiChannel;
@@ -13,6 +11,7 @@ import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Receiver;
 import javax.sound.midi.ShortMessage;
 import javax.sound.midi.Synthesizer;
+
 import cs3500.music.model.MusicEditorImpl;
 import cs3500.music.model.Note;
 
@@ -151,21 +150,6 @@ public class MidiViewImpl implements MidiView {
   @Override
   public void pause() throws InvalidMidiDataException {
     this.paused = !paused;
-   // System.out.println(paused);  // TODO
-//    // resume playing music
-//    if (paused == false) {
-//      if (curBeat <= model.getHighBeat()) {
-//        for (Note n : model.getNotesAtBeat(curBeat)) {
-//          if (n.getStartBeat() <= curBeat && n.getEndBeat() >= curBeat) {
-//            MidiMessage start = new ShortMessage(ShortMessage.NOTE_ON, n.getInstrument(),
-//                    n.getPitchIdx(), n.getVolume());
-//            this.receiver.send(start, -1);
-//          }
-//        }
-//      }
-//    }
-//    // pause the music
-    //else { // TODO
     if (paused == true) {
       if (curBeat <= model.getHighBeat()) {
         for (Note n : model.getNotesAtBeat(curBeat)) {
@@ -184,36 +168,9 @@ public class MidiViewImpl implements MidiView {
    */
   @Override
   public void display() throws InterruptedException {
-   //this.initTimer();
-    }
 
-//  /**
-//   * initialize the timer by setting the task to be scheduled and
-//   * the time in milliseconds between successive task executions.
-//   */
-//  public void initTimer() {
-//    timer = new Timer();
-//    timer.schedule(new Task(), 0, model.getTempo() / 1000);
-//    // this.receiver.close(); // Only call this once you're done playing *all* notes
-//  }
-//
-//  class Task extends TimerTask {
-//    // the actual action to be performed
-//    public void run() {
-//      if (!paused) {
-//        // play the current beat you're on
-//        try {
-//          if (curBeat <= model.getHighBeat()) {
-//            playNotesAtBeat(curBeat);
-//          }
-//        } catch (Exception e) {
-//
-//        }
-//        // increment the current beat
-//        curBeat++;
-//      }
-//    }
-//  }
+  }
+
 
   /**
    * plays notes starting at a specific time
@@ -232,8 +189,6 @@ public class MidiViewImpl implements MidiView {
         MidiMessage stop = new ShortMessage(ShortMessage.NOTE_OFF, note.getInstrument(),
                 note.getPitchIdx(), note.getVolume());
 
-       // this.receiver.send(start, -1);
-        //this.receiver.send(stop, -1);
         this.receiver.send(start, this.synth.getMicrosecondPosition());
         this.receiver.send(stop, this.synth.getMicrosecondPosition() +
                 (note.getEndBeat() - note.getStartBeat()) * model.getTempo());

@@ -11,4 +11,9 @@ public interface CombinedView extends GuiView {
   @Override
   void pause() throws InvalidMidiDataException;
   void changePauseValue();
+
+  GuiViewFrame getGui();
+
+  MidiViewImpl getMidi();
+
 }

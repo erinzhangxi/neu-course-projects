@@ -197,6 +197,15 @@ public class MusicEditorImpl implements MusicEditorModel {
     this.lowBeat = Math.max(note.getEndBeat(), this.highPitch);
   }
 
+  public void removeNote(int pitchIdx, int startBeat) {
+    for (Note n : getAll()) {
+      if ((n.getPitchIdx() == pitchIdx) && (n.getStartBeat() == startBeat)) {
+        System.out.println("remove the note");
+        List<Note> notes = map.get(n.getStartBeat());
+        notes.remove(n);
+      }
+    }
+  }
 
   @Override
   public void moveNote(Note oldNote, Note newNote) {

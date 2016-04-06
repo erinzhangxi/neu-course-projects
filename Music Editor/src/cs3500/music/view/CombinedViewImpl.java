@@ -31,6 +31,14 @@ public class CombinedViewImpl implements CombinedView {
     this.paused = false;
   }
 
+  public GuiViewFrame getGui() {
+    return this.gui;
+  }
+
+  public MidiViewImpl getMidi() {
+    return this.midi;
+  }
+
   @Override
   public void display() throws InterruptedException {
     gui.display();

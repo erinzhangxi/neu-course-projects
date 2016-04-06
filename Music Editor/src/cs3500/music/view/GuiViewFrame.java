@@ -10,6 +10,8 @@ import cs3500.music.controller.KeyboardHandler;
 import cs3500.music.controller.MouseHandler;
 import cs3500.music.model.MusicEditorImpl;
 import cs3500.music.model.Note;
+import cs3500.music.model.NoteImpl;
+import cs3500.music.model.Pitch;
 
 /**
  * A skeleton Frame (i.e., a window) in Swing
@@ -128,6 +130,23 @@ public class GuiViewFrame extends JFrame implements GuiView {
   public boolean getPauseState() {
     return this.paused;
   }
+
+  public void getNoteFromXandY(int x, int y, int duration) {
+    int noteBeat = ((x - displayPanel.startGridX) / displayPanel.rectwidth);
+    int notePitch = model.getHighPitch() - ((y - displayPanel.startGridY) /
+            displayPanel.rectheight);
+    Note note = new NoteImpl(Pitch.getPitch(notePitch % 12), notePitch / 12,
+            noteBeat, noteBeat + duration, 1, 64);
+    model.addNote(note);
+  }
+
+  public void removeNoteFromXandY(int x, int y) {
+    int noteBeat = ((x - displayPanel.startGridX) / displayPanel.rectwidth);
+    int notePitch = model.getHighPitch() - ((y - displayPanel.startGridY) /
+            displayPanel.rectheight);
+    model.removeNote(notePitch, noteBeat);
+  }
+
 
   // TODO WHY??
   public void removeMouseHandler(MouseHandler mouse) {}
