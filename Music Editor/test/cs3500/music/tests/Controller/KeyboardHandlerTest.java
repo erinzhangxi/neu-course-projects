@@ -1,8 +1,10 @@
-package cs3500.music.controller;
+package cs3500.music.tests.Controller;
 import org.junit.Test;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+
+import cs3500.music.controller.KeyboardHandler;
 
 import static junit.framework.TestCase.assertEquals;
 

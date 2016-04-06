@@ -38,7 +38,7 @@ public class GuiViewFrame extends JFrame implements GuiView {
     this.getContentPane().add(scroll);
     this.pack();
     this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    line =  displayPanel.getLine();
+    line = displayPanel.getLine();
   }
 
   public void nextWindowIfEnd() {
@@ -165,8 +165,6 @@ public class GuiViewFrame extends JFrame implements GuiView {
     return newNote;
   }
 
-
-  // TODO
   public void removeMouseHandler(MouseHandler mouse) {}
 
 }

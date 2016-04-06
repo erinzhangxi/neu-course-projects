@@ -5,20 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ebe5edb-e449-49f2-92f3-dbc7628218bc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/cs3500/music/controller/ControllerTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/cs3500/music/controller/KeyboardHandlerTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/cs3500/music/controller/MouseHandlerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/hw05_jar/hw05.jar" afterPath="$PROJECT_DIR$/out/artifacts/hw05_jar/hw05.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/hw05/cs3500/music/controller/Controller$End.class" afterPath="$PROJECT_DIR$/out/production/hw05/cs3500/music/controller/Controller$End.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/hw05/cs3500/music/controller/Controller$Home.class" afterPath="$PROJECT_DIR$/out/production/hw05/cs3500/music/controller/Controller$Home.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/hw05/cs3500/music/controller/Controller$MouseExecute.class" afterPath="$PROJECT_DIR$/out/production/hw05/cs3500/music/controller/Controller$MouseExecute.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/hw05/cs3500/music/controller/Controller$Status.class" afterPath="$PROJECT_DIR$/out/production/hw05/cs3500/music/controller/Controller$Status.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/hw05/cs3500/music/controller/Controller.class" afterPath="$PROJECT_DIR$/out/production/hw05/cs3500/music/controller/Controller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/hw05/cs3500/music/controller/MouseHandler.class" afterPath="$PROJECT_DIR$/out/production/hw05/cs3500/music/controller/MouseHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/hw05/cs3500/music/view/GuiViewFrame.class" afterPath="$PROJECT_DIR$/out/production/hw05/cs3500/music/view/GuiViewFrame.class" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/cs3500/music/controller/KeyboardHandlerTest.java" afterPath="$PROJECT_DIR$/test/cs3500/music/tests/Controller/KeyboardHandlerTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/cs3500/music/controller/MouseHandlerTest.java" afterPath="$PROJECT_DIR$/test/cs3500/music/tests/Controller/MouseHandlerTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/cs3500/music/tests/ConsoleViewImplTest.java" afterPath="$PROJECT_DIR$/test/cs3500/music/tests/View/ConsoleViewImplTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/cs3500/music/tests/GuiViewTest.java" afterPath="$PROJECT_DIR$/test/cs3500/music/tests/View/GuiViewTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/cs3500/music/tests/MidiViewImplTest.java" afterPath="$PROJECT_DIR$/test/cs3500/music/tests/View/MidiViewImplTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/cs3500/music/tests/MusicEditorImplTest.java" afterPath="$PROJECT_DIR$/test/cs3500/music/tests/Model/MusicEditorImplTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cs3500/music/controller/Controller.java" afterPath="$PROJECT_DIR$/src/cs3500/music/controller/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cs3500/music/controller/MouseHandler.java" afterPath="$PROJECT_DIR$/src/cs3500/music/controller/MouseHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cs3500/music/controller/ControllerTest.java" afterPath="$PROJECT_DIR$/src/cs3500/music/controller/ControllerTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cs3500/music/view/GuiViewFrame.java" afterPath="$PROJECT_DIR$/src/cs3500/music/view/GuiViewFrame.java" />
     </list>
     <ignored path="hw05.iws" />
@@ -58,7 +52,7 @@
         <entry file="file://$PROJECT_DIR$/src/cs3500/music/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="52" column="38" selection-start-line="50" selection-start-column="22" selection-end-line="52" selection-end-column="38" />
+              <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2508#2509#0" expanded="true" />
@@ -68,89 +62,97 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MusicEditor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cs3500/music/MusicEditor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="45" column="5" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cs3500/music/controller/IController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MouseHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cs3500/music/controller/MouseHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="GuiViewFrame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cs3500/music/view/GuiViewFrame.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="156" column="4" selection-start-line="156" selection-start-column="4" selection-end-line="159" selection-end-column="7" />
+              <caret line="37" column="38" selection-start-line="37" selection-start-column="38" selection-end-line="37" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConsoleViewImplTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/cs3500/music/tests/View/ConsoleViewImplTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GuiViewTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/cs3500/music/tests/View/GuiViewTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MidiViewImplTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/cs3500/music/tests/View/MidiViewImplTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MusicEditorImplTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/cs3500/music/tests/Model/MusicEditorImplTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="KeyboardHandlerTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cs3500/music/controller/KeyboardHandlerTest.java">
+        <entry file="file://$PROJECT_DIR$/test/cs3500/music/tests/Controller/KeyboardHandlerTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="54" column="33" selection-start-line="54" selection-start-column="33" selection-end-line="54" selection-end-column="33" />
+              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#574#575#0" expanded="true" />
-                <element signature="e#619#620#0" expanded="true" />
-                <element signature="e#994#995#0" expanded="true" />
-                <element signature="e#1039#1040#0" expanded="true" />
-                <element signature="e#1428#1429#0" expanded="true" />
-                <element signature="e#1476#1477#0" expanded="true" />
+                <element signature="e#629#630#0" expanded="true" />
+                <element signature="e#674#675#0" expanded="true" />
+                <element signature="e#1049#1050#0" expanded="true" />
+                <element signature="e#1094#1095#0" expanded="true" />
+                <element signature="e#1483#1484#0" expanded="true" />
+                <element signature="e#1531#1532#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MouseHandlerTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cs3500/music/controller/MouseHandlerTest.java">
+      <file leaf-file-name="MouseHandlerTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/cs3500/music/tests/Controller/MouseHandlerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.27918783">
+              <caret line="13" column="3" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#594#595#0" expanded="true" />
-                <element signature="e#645#646#0" expanded="true" />
-                <element signature="e#1163#1164#0" expanded="true" />
-                <element signature="e#1209#1210#0" expanded="true" />
-                <element signature="e#1462#1463#0" expanded="true" />
-                <element signature="e#1508#1509#0" expanded="true" />
+                <element signature="e#646#647#0" expanded="true" />
+                <element signature="e#697#698#0" expanded="true" />
+                <element signature="e#1215#1216#0" expanded="true" />
+                <element signature="e#1261#1262#0" expanded="true" />
+                <element signature="e#1514#1515#0" expanded="true" />
+                <element signature="e#1560#1561#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ControllerTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ControllerTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cs3500/music/controller/ControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.15228426">
-              <caret line="6" column="2" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -161,16 +163,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MusicEditorImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cs3500/music/model/MusicEditorImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.407408">
-              <caret line="201" column="34" selection-start-line="201" selection-start-column="13" selection-end-line="201" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -197,12 +189,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/test/cs3500/music/model/MusicEditorImplTest.java" />
-        <option value="$PROJECT_DIR$/test/cs3500/music/tests/PitchTest.java" />
-        <option value="$PROJECT_DIR$/music-editor-skeleton/src/cs3500/music/MusicEditor.java" />
-        <option value="$PROJECT_DIR$/src/cs3500/music/view/ViewInterface.java" />
-        <option value="$PROJECT_DIR$/src/cs3500/music/view/GuiMidiViewFrame.java" />
-        <option value="$PROJECT_DIR$/src/cs3500/music/view/MidiMidiViewImpl.java" />
         <option value="$PROJECT_DIR$/test/cs3500/music/tests/MusicView.java" />
         <option value="$PROJECT_DIR$/src/cs3500/music/view/MusicView.java" />
         <option value="$PROJECT_DIR$/src/cs3500/music/view/CombineViewImpl.java" />
@@ -242,12 +228,18 @@
         <option value="$PROJECT_DIR$/src/cs3500/music/model/MusicEditorImpl.java" />
         <option value="$PROJECT_DIR$/src/cs3500/music/controller/MouseHandler.java" />
         <option value="$PROJECT_DIR$/src/cs3500/music/model/NoteImpl.java" />
-        <option value="$PROJECT_DIR$/src/cs3500/music/view/GuiViewFrame.java" />
         <option value="$PROJECT_DIR$/src/cs3500/music/controller/KeyListenerImpl.java" />
         <option value="$PROJECT_DIR$/src/cs3500/music/controller/Controller.java" />
         <option value="$PROJECT_DIR$/src/cs3500/music/controller/KeyboardHandlerTest.java" />
         <option value="$PROJECT_DIR$/src/cs3500/music/controller/MouseHandlerTest.java" />
         <option value="$PROJECT_DIR$/src/cs3500/music/controller/ControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/cs3500/music/view/GuiViewFrame.java" />
+        <option value="$PROJECT_DIR$/test/cs3500/music/tests/View/ConsoleViewImplTest.java" />
+        <option value="$PROJECT_DIR$/test/cs3500/music/tests/View/GuiViewTest.java" />
+        <option value="$PROJECT_DIR$/test/cs3500/music/tests/View/MidiViewImplTest.java" />
+        <option value="$PROJECT_DIR$/test/cs3500/music/tests/Model/MusicEditorImplTest.java" />
+        <option value="$PROJECT_DIR$/test/cs3500/music/tests/Controller/KeyboardHandlerTest.java" />
+        <option value="$PROJECT_DIR$/test/cs3500/music/tests/Controller/MouseHandlerTest.java" />
       </list>
     </option>
   </component>
@@ -339,6 +331,54 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="View" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hw05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Music Editor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hw05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Music Editor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -496,9 +536,11 @@
       <recent name="$PROJECT_DIR$/cs3500.music" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="cs3500.music.tests.Controller" />
+      <recent name="cs3500.music.tests.Model" />
+      <recent name="cs3500.music.tests.View" />
       <recent name="cs3500.music.model" />
       <recent name="cs3500.music.view" />
-      <recent name="cs3500.music.tests" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="cs3500.music.controller" />
@@ -508,15 +550,15 @@
     <configuration default="false" name="KeyboardHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="cs3500.music.controller.*" />
+          <option name="PATTERN" value="cs3500.music.tests.Controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="hw05" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="cs3500.music.controller" />
-      <option name="MAIN_CLASS_NAME" value="cs3500.music.controller.KeyboardHandlerTest" />
+      <option name="PACKAGE_NAME" value="cs3500.music.tests.Controller" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.music.tests.Controller.KeyboardHandlerTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -534,15 +576,15 @@
     <configuration default="false" name="KeyboardHandlerTest.testKeyPressed" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="cs3500.music.controller.*" />
+          <option name="PATTERN" value="cs3500.music.tests.Controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="hw05" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="cs3500.music.controller" />
-      <option name="MAIN_CLASS_NAME" value="cs3500.music.controller.KeyboardHandlerTest" />
+      <option name="PACKAGE_NAME" value="cs3500.music.tests.Controller" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.music.tests.Controller.KeyboardHandlerTest" />
       <option name="METHOD_NAME" value="testKeyPressed" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -560,15 +602,15 @@
     <configuration default="false" name="KeyboardHandlerTest.testKeyReleased" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="cs3500.music.controller.*" />
+          <option name="PATTERN" value="cs3500.music.tests.Controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="hw05" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="cs3500.music.controller" />
-      <option name="MAIN_CLASS_NAME" value="cs3500.music.controller.KeyboardHandlerTest" />
+      <option name="PACKAGE_NAME" value="cs3500.music.tests.Controller" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.music.tests.Controller.KeyboardHandlerTest" />
       <option name="METHOD_NAME" value="testKeyReleased" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -586,15 +628,15 @@
     <configuration default="false" name="MouseHandlerTest.testMouseClicked" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="cs3500.music.controller.*" />
+          <option name="PATTERN" value="cs3500.music.tests.Controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="hw05" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="cs3500.music.controller" />
-      <option name="MAIN_CLASS_NAME" value="cs3500.music.controller.MouseHandlerTest" />
+      <option name="PACKAGE_NAME" value="cs3500.music.tests.Controller" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.music.tests.Controller.MouseHandlerTest" />
       <option name="METHOD_NAME" value="testMouseClicked" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -612,15 +654,15 @@
     <configuration default="false" name="MouseHandlerTest.testCoordinates" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="cs3500.music.controller.*" />
+          <option name="PATTERN" value="cs3500.music.tests.Controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="hw05" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="cs3500.music.controller" />
-      <option name="MAIN_CLASS_NAME" value="cs3500.music.controller.MouseHandlerTest" />
+      <option name="PACKAGE_NAME" value="cs3500.music.tests.Controller" />
+      <option name="MAIN_CLASS_NAME" value="cs3500.music.tests.Controller.MouseHandlerTest" />
       <option name="METHOD_NAME" value="testCoordinates" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -1113,7 +1155,7 @@
       <workItem from="1459371741698" duration="10000" />
       <workItem from="1459380059293" duration="13960000" />
       <workItem from="1459526524620" duration="63888000" />
-      <workItem from="1459904982068" duration="24170000" />
+      <workItem from="1459904982068" duration="25576000" />
     </task>
     <task id="LOCAL-00001" summary="added comment">
       <created>1459533024605</created>
@@ -1157,7 +1199,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="331614000" />
+    <option name="totallyTimeSpent" value="333020000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1333,40 +1375,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/cs3500/music/tests/GuiViewTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="74" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/cs3500/music/tests/MidiViewImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="107" column="7" selection-start-line="107" selection-start-column="7" selection-end-line="107" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mary-little-lamb.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/cs3500/music/tests/ConsoleViewImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="81" column="22" selection-start-line="81" selection-start-column="22" selection-end-line="81" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1400,14 +1412,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/cs3500/music/tests/MusicEditorImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="403" column="56" selection-start-line="403" selection-start-column="56" selection-end-line="403" selection-end-column="56" />
           <folding />
         </state>
       </provider>
@@ -1570,31 +1574,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cs3500/music/view/GuiViewFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="156" column="4" selection-start-line="156" selection-start-column="4" selection-end-line="159" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cs3500/music/controller/IController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cs3500/music/controller/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="52" column="38" selection-start-line="50" selection-start-column="22" selection-end-line="52" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2508#2509#0" expanded="true" />
-            <element signature="e#2532#2533#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1616,43 +1600,95 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cs3500/music/controller/KeyboardHandlerTest.java">
+    <entry file="file://$PROJECT_DIR$/src/cs3500/music/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="33" selection-start-line="54" selection-start-column="33" selection-end-line="54" selection-end-column="33" />
+          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#574#575#0" expanded="true" />
-            <element signature="e#619#620#0" expanded="true" />
-            <element signature="e#994#995#0" expanded="true" />
-            <element signature="e#1039#1040#0" expanded="true" />
-            <element signature="e#1428#1429#0" expanded="true" />
-            <element signature="e#1476#1477#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cs3500/music/controller/MouseHandlerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#594#595#0" expanded="true" />
-            <element signature="e#645#646#0" expanded="true" />
-            <element signature="e#1163#1164#0" expanded="true" />
-            <element signature="e#1209#1210#0" expanded="true" />
-            <element signature="e#1462#1463#0" expanded="true" />
-            <element signature="e#1508#1509#0" expanded="true" />
+            <element signature="e#2508#2509#0" expanded="true" />
+            <element signature="e#2532#2533#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cs3500/music/controller/ControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15228426">
-          <caret line="6" column="2" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cs3500/music/view/GuiViewFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="38" selection-start-line="37" selection-start-column="38" selection-end-line="37" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/cs3500/music/tests/View/ConsoleViewImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/cs3500/music/tests/View/GuiViewTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/cs3500/music/tests/View/MidiViewImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/cs3500/music/tests/Model/MusicEditorImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/cs3500/music/tests/Controller/KeyboardHandlerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#629#630#0" expanded="true" />
+            <element signature="e#674#675#0" expanded="true" />
+            <element signature="e#1049#1050#0" expanded="true" />
+            <element signature="e#1094#1095#0" expanded="true" />
+            <element signature="e#1483#1484#0" expanded="true" />
+            <element signature="e#1531#1532#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/cs3500/music/tests/Controller/MouseHandlerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27918783">
+          <caret line="13" column="3" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#646#647#0" expanded="true" />
+            <element signature="e#697#698#0" expanded="true" />
+            <element signature="e#1215#1216#0" expanded="true" />
+            <element signature="e#1261#1262#0" expanded="true" />
+            <element signature="e#1514#1515#0" expanded="true" />
+            <element signature="e#1560#1561#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
