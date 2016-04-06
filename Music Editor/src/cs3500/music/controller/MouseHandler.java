@@ -13,6 +13,8 @@ public class MouseHandler implements MouseListener {
   private final Map<Integer, Runnable> pressedMouse;
   private final Map<Integer, Runnable> releasedMouse;
   private MouseEvent curEvent;
+  private MouseEvent pressed;
+  private MouseEvent released;
 
   public MouseHandler() {
     this.clickedMouse = new HashMap<>();
@@ -23,6 +25,15 @@ public class MouseHandler implements MouseListener {
   public MouseEvent getCurEvent() {
     return this.curEvent;
   }
+
+  public MouseEvent getPressedEvent() {
+    return this.pressed;
+  }
+
+  public MouseEvent getReleasedEvent() {
+    return this.curEvent;
+  }
+
 
   public Map<Integer, Runnable> getClickedMouse() {
     return this.clickedMouse;
@@ -47,7 +58,7 @@ public class MouseHandler implements MouseListener {
 
   @Override
   public void mousePressed(MouseEvent e) {
-    curEvent = e;
+    pressed = e;
     int mouse = e.getButton();
     if (pressedMouse.containsKey(mouse)) {
       pressedMouse.get(mouse).run();
@@ -56,7 +67,7 @@ public class MouseHandler implements MouseListener {
 
   @Override
   public void mouseReleased(MouseEvent e) {
-    curEvent = e;
+    released = e;
     int mouse = e.getButton();
     if (releasedMouse.containsKey(mouse)) {
       releasedMouse.get(mouse).run();

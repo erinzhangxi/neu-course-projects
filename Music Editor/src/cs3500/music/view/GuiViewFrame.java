@@ -131,7 +131,7 @@ public class GuiViewFrame extends JFrame implements GuiView {
     return this.paused;
   }
 
-  public void getNoteFromXandY(int x, int y, int duration) {
+  public void addNoteFromXandY(int x, int y, int duration) {
     int noteBeat = ((x - displayPanel.startGridX) / displayPanel.rectwidth);
     int notePitch = model.getHighPitch() - ((y - displayPanel.startGridY) /
             displayPanel.rectheight);
@@ -147,8 +147,26 @@ public class GuiViewFrame extends JFrame implements GuiView {
     model.removeNote(notePitch, noteBeat);
   }
 
+  public Note getNote(int x, int y) {
+    System.out.println("x is : " + x + " y is : " + y);  // TODO
+    int noteBeat = ((x - displayPanel.startGridX) / displayPanel.rectwidth);
+    int notePitch = model.getHighPitch() - ((y - displayPanel.startGridY) /
+            displayPanel.rectheight);
+    Note newNote = null;
+    for (Note n : model.getAll()) {
+      if ((n.getPitchIdx() == notePitch) && (n.getStartBeat() == noteBeat)) {
+        System.out.println(n.getPitchIdx() + "  " + n.getStartBeat());//TODO
+        newNote = n;
+      }
+    }
+    if (newNote == null) {
+      throw new IllegalArgumentException("This note does not exist");
+    }
+    return newNote;
+  }
 
-  // TODO WHY??
+
+  // TODO
   public void removeMouseHandler(MouseHandler mouse) {}
 
 }
