@@ -1,9 +1,11 @@
 package cs3500.music.view;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sound.sampled.Line;
 import javax.swing.*;
 
 import cs3500.music.model.MusicEditorImpl;
@@ -20,16 +22,20 @@ public class ConcreteGuiViewPanel extends JPanel {
   List<Note> notes = new ArrayList<>();
   MusicEditorImpl model = new MusicEditorImpl(notes);
 
+
   int startGridX = 80;
   int startGridY = 40;
   /**
    * the width of a rectangle representing one beat of a note
    */
   int rectwidth = 20;
+
+  Timer timer;
   /**
    * the height of a rectangle representing one beat of a note
    */
   int rectheight = 20;
+  MyLine line;
 
   /**
    * Constructs a panel part of the view given the MusicEditorImpl model
@@ -38,6 +44,12 @@ public class ConcreteGuiViewPanel extends JPanel {
    */
   public ConcreteGuiViewPanel(MusicEditorImpl model) {
     this.model = model;
+    line = new MyLine(startGridX, startGridY, 80, 40 + (model.getHighPitch() -
+            model.getLowPitch() + 1) * 20);
+  }
+
+  public MyLine getLine() {
+    return this.line;
   }
 
   /**
@@ -77,20 +89,23 @@ public class ConcreteGuiViewPanel extends JPanel {
    * @param maxPitch  max pitch of the piece
    */
   public void paintNote(Note note, Graphics2D g2, int maxPitch) {
-    /**
-     * draws the first beat of a note
-     */
-    g2.setColor(Color.BLACK);
-    g2.fillRect(startGridX + (note.getStartBeat()) * rectwidth, startGridY
-            + (maxPitch - note.getPitchIdx()) * rectheight, rectwidth, rectheight);
-    /**
-     * draws the sustaining beats of a note
-     */
-    g2.setColor(Color.GREEN);
-    g2.fillRect(((startGridX + (note.getStartBeat()) * rectwidth) + rectwidth),
-            startGridY + (maxPitch - note.getPitchIdx()) * rectheight,
-            rectwidth * (note.getEndBeat() - note.getStartBeat() - 1),
-            rectheight);
+    MyRectangle newRect = new MyRectangle(note, startGridX + (note.getStartBeat()) * rectwidth,
+            startGridY + (maxPitch - note.getPitchIdx()) * rectheight, rectwidth, rectheight);
+    newRect.draw(g2, maxPitch);
+//    /**
+//     * draws the first beat of a note
+//     */
+//    g2.setColor(Color.BLACK);
+//    g2.fillRect(startGridX + (note.getStartBeat()) * rectwidth, startGridY
+//            + (maxPitch - note.getPitchIdx()) * rectheight, rectwidth, rectheight);
+//    /**
+//     * draws the sustaining beats of a note
+//     */
+//    g2.setColor(Color.GREEN);
+//    g2.fillRect(((startGridX + (note.getStartBeat()) * rectwidth) + rectwidth),
+//            startGridY + (maxPitch - note.getPitchIdx()) * rectheight,
+//            rectwidth * (note.getEndBeat() - note.getStartBeat() - 1),
+//            rectheight);
   }
 
   /**
@@ -129,8 +144,7 @@ public class ConcreteGuiViewPanel extends JPanel {
       }
       y += 20;
     }
-    g2.setColor(Color.RED);
-    g2.drawLine(startGridX, startGridY, 80, 40 + (maxPitch - minPitch + 1) * 20);
+    line.makeLine(g2);
   }
 
   @Override
@@ -146,6 +160,71 @@ public class ConcreteGuiViewPanel extends JPanel {
    */
   public MusicEditorImpl getModelFromPanel() {
     return new MusicEditorImpl(model.getAll());
+  }
+
+  class MyRectangle {
+    int x;
+    int y;
+    int height;
+    int width;
+    Note note;
+    public MyRectangle(Note note, int x, int y, int width, int height) {
+      this.x = x;
+      this.y = y;
+      this.width = width;
+      this.height = height;
+      this.note = note;
+    }
+
+    public void changePosition(int newX, int newY) {
+      x = newX;
+      y = newY;
+    }
+
+    public void draw(Graphics g2, int maxPitch) {
+      /**
+       * draws the first beat of a note
+       */
+      g2.setColor(Color.BLACK);
+      g2.fillRect(x, y, width, height);
+      /**
+       * draws the sustaining beats of a note
+       */
+      g2.setColor(Color.GREEN);
+      g2.fillRect((x + rectwidth), y, rectwidth * (note.getEndBeat() - note.getStartBeat() - 1),
+              height);
+    }
+  }
+
+  class MyLine {
+    int beginX;
+    int beginY;
+    int endX;
+    int endY;
+
+    public MyLine(int x1, int y1, int x2, int y2) {
+      this.beginX = x1 - 20;
+      this.beginY = y1;
+      this.endX = x2 - 20;
+      this.endY = y2;
+    }
+
+    public void makeLine(Graphics g2) {
+      g2.setColor(Color.RED);
+      //g2.drawLine(startGridX, startGridY, 80, 40 + (maxPitch - minPitch + 1) * 20);
+      g2.drawLine(beginX, beginY, endX, endY);
+    }
+    public void moveLine() {
+      if (beginX < (model.getHighBeat()*20 + startGridX)) {
+        beginX = beginX + 20;
+        endX = endX + 20;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return this.beginX + " " + this.endX;
+    }
   }
 
 }

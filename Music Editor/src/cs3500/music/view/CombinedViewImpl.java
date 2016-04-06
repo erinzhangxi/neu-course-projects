@@ -1,7 +1,11 @@
 package cs3500.music.view;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import javax.sound.midi.InvalidMidiDataException;
 
+import cs3500.music.MusicEditor;
 import cs3500.music.controller.KeyboardHandler;
 import cs3500.music.controller.MouseHandler;
 import cs3500.music.model.MusicEditorImpl;
@@ -13,18 +17,24 @@ import cs3500.music.model.MusicEditorModel;
 public class CombinedViewImpl implements CombinedView {
   public GuiViewFrame gui;
   public MidiViewImpl midi;
+  public MusicEditorImpl model;
   KeyboardHandler keyboard = new KeyboardHandler();
   MouseHandler mouse = new MouseHandler();
+  private Timer timer = new Timer();
+  private int curBeat;
+  public boolean paused;
 
   public CombinedViewImpl(MusicEditorImpl model) {
     this.gui = new GuiViewFrame(model);
     this.midi = new MidiViewImpl(model);
+    this.model = model;
+    this.paused = false;
   }
 
   @Override
   public void display() throws InterruptedException {
     gui.display();
-    midi.display();
+    this.initTimer();
   }
 
   @Override
@@ -34,6 +44,11 @@ public class CombinedViewImpl implements CombinedView {
     } catch (InvalidMidiDataException e) {
       e.printStackTrace();
     }
+  }
+
+  @Override
+  public void changePauseValue() {
+    this.paused = !this.paused;
   }
 
   @Override
@@ -81,4 +96,40 @@ public class CombinedViewImpl implements CombinedView {
   public void resetFocus() {
     gui.resetFocus();
   }
+
+  /**
+   * initialize the timer by setting the task to be scheduled and
+   * the time in milliseconds between successive task executions.
+   */
+  public void initTimer() {
+    timer = new Timer();
+    timer.schedule(new Task(), 0, model.getTempo() / 1000);
+    // this.receiver.close(); // Only call this once you're done playing *all* notes
+  }
+
+  class Task extends TimerTask {
+    // the actual action to be performed
+    public void run() {
+      if (paused == false) {
+        // play the current beat you're on
+        try {
+          if (curBeat <= model.getHighBeat()) {
+            midi.playNotesAtBeat(curBeat);
+          }
+        } catch (Exception e) {
+
+        }
+
+        gui.getPanel().getLine().moveLine();
+        gui.repaint();
+        // increment the current beat
+        curBeat++;
+      }
+      else {
+        pause();  
+      }
+    }
+
+  }
+
 }

@@ -26,7 +26,7 @@ public class MidiViewImpl implements MidiView {
   private MockRec mockRec;
   private MockSyn mockSyn;
   private Appendable log;
-  private Timer timer = new Timer();
+ // private Timer timer = new Timer();
   private boolean paused = false;
   private int curBeat;
 
@@ -150,28 +150,29 @@ public class MidiViewImpl implements MidiView {
 
   @Override
   public void pause() throws InvalidMidiDataException {
-    System.out.println("paused() in midiView");  // TODO
     this.paused = !paused;
-    // resume playing music
-    if (paused == false) {
+   // System.out.println(paused);  // TODO
+//    // resume playing music
+//    if (paused == false) {
+//      if (curBeat <= model.getHighBeat()) {
+//        for (Note n : model.getNotesAtBeat(curBeat)) {
+//          if (n.getStartBeat() <= curBeat && n.getEndBeat() >= curBeat) {
+//            MidiMessage start = new ShortMessage(ShortMessage.NOTE_ON, n.getInstrument(),
+//                    n.getPitchIdx(), n.getVolume());
+//            this.receiver.send(start, -1);
+//          }
+//        }
+//      }
+//    }
+//    // pause the music
+    //else { // TODO
+    if (paused == true) {
       if (curBeat <= model.getHighBeat()) {
         for (Note n : model.getNotesAtBeat(curBeat)) {
           if (n.getStartBeat() <= curBeat && n.getEndBeat() >= curBeat) {
-            MidiMessage start = new ShortMessage(ShortMessage.NOTE_ON, n.getInstrument(),
+            MidiMessage end = new ShortMessage(ShortMessage.NOTE_OFF, n.getInstrument(),
                     n.getPitchIdx(), n.getVolume());
-            this.receiver.send(start, -1);
-          }
-        }
-      }
-    }
-    // pause the music
-    else { // TODO
-      if (curBeat <= model.getHighBeat()) {
-        for (Note n : model.getNotesAtBeat(curBeat)) {
-          if (n.getStartBeat() <= curBeat && n.getEndBeat() >= curBeat) {
-            MidiMessage start = new ShortMessage(ShortMessage.NOTE_OFF, n.getInstrument(),
-                    n.getPitchIdx(), n.getVolume());
-            this.receiver.send(start, -1);
+            this.receiver.send(end, -1);
           }
         }
       }
@@ -183,36 +184,36 @@ public class MidiViewImpl implements MidiView {
    */
   @Override
   public void display() throws InterruptedException {
-    this.initTimer();
+   //this.initTimer();
     }
 
-  /**
-   * initialize the timer by setting the task to be scheduled and
-   * the time in milliseconds between successive task executions.
-   */
-  public void initTimer() {
-    timer = new Timer();
-    timer.schedule(new Task(), 0, model.getTempo() / 1000);
-    // this.receiver.close(); // Only call this once you're done playing *all* notes
-  }
-
-  class Task extends TimerTask {
-    // the actual action to be performed
-    public void run() {
-      if (!paused) {
-        // play the current beat you're on
-        try {
-          if (curBeat <= model.getHighBeat()) {
-            playNotesAtBeat(curBeat);
-          }
-        } catch (Exception e) {
-
-        }
-        // increment the current beat
-        curBeat++;
-      }
-    }
-  }
+//  /**
+//   * initialize the timer by setting the task to be scheduled and
+//   * the time in milliseconds between successive task executions.
+//   */
+//  public void initTimer() {
+//    timer = new Timer();
+//    timer.schedule(new Task(), 0, model.getTempo() / 1000);
+//    // this.receiver.close(); // Only call this once you're done playing *all* notes
+//  }
+//
+//  class Task extends TimerTask {
+//    // the actual action to be performed
+//    public void run() {
+//      if (!paused) {
+//        // play the current beat you're on
+//        try {
+//          if (curBeat <= model.getHighBeat()) {
+//            playNotesAtBeat(curBeat);
+//          }
+//        } catch (Exception e) {
+//
+//        }
+//        // increment the current beat
+//        curBeat++;
+//      }
+//    }
+//  }
 
   /**
    * plays notes starting at a specific time

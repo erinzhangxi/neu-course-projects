@@ -39,13 +39,18 @@ public class Controller implements IController {
    */
   private void configureKeyBoardHandler() {
     // play back
+//    keyboard.addKeyPressed(KeyEvent.VK_SPACE, () -> {
+//      try {
+//        this.view.pause();
+//      } catch (InvalidMidiDataException e) {
+//        e.printStackTrace();
+//      }
+//    });
     keyboard.addKeyPressed(KeyEvent.VK_SPACE, () -> {
-      try {
-        this.view.pause();
-      } catch (InvalidMidiDataException e) {
-        e.printStackTrace();
-      }
+      view.changePauseValue();
+
     });
+
     keyboard.addKeyPressed(KeyEvent.VK_ENTER, new End());
     keyboard.addKeyPressed(KeyEvent.VK_H, new Home());
     // scroll commands

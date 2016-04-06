@@ -10,4 +10,5 @@ public interface CombinedView extends GuiView {
   void display() throws InterruptedException;
   @Override
   void pause() throws InvalidMidiDataException;
+  void changePauseValue();
 }

@@ -16,7 +16,7 @@ import cs3500.music.model.Note;
  */
 public class GuiViewFrame extends JFrame implements GuiView {
 
-  private JPanel displayPanel; // You may want to refine this to a subtype of JPanel
+  private ConcreteGuiViewPanel displayPanel; // You may want to refine this to a subtype of JPanel
   private List<Note> notes = new ArrayList<>();
   private MusicEditorImpl model = new MusicEditorImpl(notes);
   private JScrollPane scroll;
@@ -111,6 +111,14 @@ public class GuiViewFrame extends JFrame implements GuiView {
   public void resetFocus() {
     displayPanel.setFocusable(true);
     displayPanel.requestFocus();
+  }
+
+  public ConcreteGuiViewPanel getPanel() {
+    return this.displayPanel;
+  }
+
+  public boolean getPauseState() {
+    return this.paused;
   }
 
   // TODO WHY??
