@@ -2,6 +2,8 @@ package cs3500.music.view;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiChannel;
@@ -25,26 +27,16 @@ public class MidiViewImpl implements MidiView {
   private MockRec mockRec;
   private MockSyn mockSyn;
   private Appendable log;
- // private Timer timer = new Timer();
+  private Timer timer = new Timer();
   private boolean paused = false;
   private int curBeat;
+
 
   /**
    * constructor
    * @param model a music editor implementation
-   */
-//  public MidiViewImpl(MusicEditorImpl model) {
-//    try {
-//      tempSyn = MidiSystem.getSynthesizer();
-//      tempSyn.open();
-//      this.model = model;
-//    } catch (MidiUnavailableException e) {
-//      e.printStackTrace();
-//    }
-//    this.synth = tempSyn;
-//  }
-
-    public MidiViewImpl(MusicEditorImpl model) {
+  */
+  public MidiViewImpl(MusicEditorImpl model) {
     try {
       synth = MidiSystem.getSynthesizer();
       receiver = synth.getReceiver();
@@ -77,7 +69,7 @@ public class MidiViewImpl implements MidiView {
    *    <ul>
    *      <li>{@link Synthesizer#open()}</li>
    *      <li>{@link Synthesizer#getReceiver()}</li>
-   *      <li>{@link Synthesizer#getChannels()}</li>
+   *      <li>{@link Synthesizer#ggetChannels()}</li>
    *    </ul>
    *  </li>
    *  <li>{@link Receiver}
@@ -168,9 +160,24 @@ public class MidiViewImpl implements MidiView {
    */
   @Override
   public void display() throws InterruptedException {
-
+    timer = new Timer();
+    timer.schedule(new Task(), 0, model.getTempo() / 1000);
   }
 
+  class Task extends TimerTask {
+    // the actual action to be performed
+    public void run() {
+
+      // play the current beat you're on
+      try {
+        if (curBeat <= model.getHighBeat()) {
+          playNotesAtBeat(curBeat);
+        }
+      } catch (Exception e) {
+      }
+      curBeat++;
+    }
+  }
 
   /**
    * plays notes starting at a specific time

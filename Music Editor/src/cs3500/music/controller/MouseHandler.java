@@ -31,7 +31,7 @@ public class MouseHandler implements MouseListener {
   }
 
   public MouseEvent getReleasedEvent() {
-    return this.curEvent;
+    return this.released;
   }
 
 

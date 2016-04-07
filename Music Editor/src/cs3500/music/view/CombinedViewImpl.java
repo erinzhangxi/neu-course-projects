@@ -10,6 +10,7 @@ import cs3500.music.controller.KeyboardHandler;
 import cs3500.music.controller.MouseHandler;
 import cs3500.music.model.MusicEditorImpl;
 import cs3500.music.model.MusicEditorModel;
+import cs3500.music.model.Note;
 
 /**
  * Created by ErinZhang on 3/17/16.
@@ -38,7 +39,6 @@ public class CombinedViewImpl implements CombinedView {
   public MidiViewImpl getMidi() {
     return this.midi;
   }
-
   @Override
   public void display() throws InterruptedException {
     gui.display();
@@ -57,6 +57,36 @@ public class CombinedViewImpl implements CombinedView {
   @Override
   public void changePauseValue() {
     this.paused = !this.paused;
+  }
+
+  @Override
+  public void addNoteFromXandY(int x, int y, int duration) {
+    this.gui.addNoteFromXandY(x, y, duration);
+  }
+
+  @Override
+  public void repaint() {
+    this.gui.repaint();
+  }
+
+  @Override
+  public void removeNoteFromXandY(int x, int y) {
+    this.gui.removeNoteFromXandY(x, y);
+  }
+
+  @Override
+  public Note getNote(int x1, int y1) {
+    return this.gui.getNote(x1, y1);
+  }
+
+  @Override
+  public void addNote(int x2, int y2, Note tempNote) {
+    this.gui.addNote(x2, y2, tempNote);
+  }
+
+  @Override
+  public ConcreteGuiViewPanel getPanel() {
+    return this.gui.getPanel();
   }
 
   @Override

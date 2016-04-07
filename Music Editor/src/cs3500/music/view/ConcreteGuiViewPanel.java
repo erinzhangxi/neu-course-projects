@@ -59,11 +59,12 @@ public class ConcreteGuiViewPanel extends JPanel {
    */
   @Override
   public void paintComponent(Graphics g) {
-    if(g instanceof Graphics2D)
-    {
+    if (g instanceof Graphics2D) {
       super.paintComponent(g);
       Graphics2D g2 = (Graphics2D)g;
       this.paintNotes(model, g2);
+      this.paintGrid(model.getLowBeat(),model.getHighBeat(),model.getLowPitch(),
+              model.getHighPitch(), g2);
     }
   }
 
@@ -77,8 +78,7 @@ public class ConcreteGuiViewPanel extends JPanel {
     for (Note n : song.getAll()) {
       this.paintNote(n, g2, song.getHighPitch());
     }
-    this.paintGrid(song.getLowBeat(),song.getHighBeat(),song.getLowPitch(),
-            song.getHighPitch(), g2);
+
   }
 
   /**
@@ -92,20 +92,6 @@ public class ConcreteGuiViewPanel extends JPanel {
     MyRectangle newRect = new MyRectangle(note, startGridX + (note.getStartBeat()) * rectwidth,
             startGridY + (maxPitch - note.getPitchIdx()) * rectheight, rectwidth, rectheight);
     newRect.draw(g2, maxPitch);
-//    /**
-//     * draws the first beat of a note
-//     */
-//    g2.setColor(Color.BLACK);
-//    g2.fillRect(startGridX + (note.getStartBeat()) * rectwidth, startGridY
-//            + (maxPitch - note.getPitchIdx()) * rectheight, rectwidth, rectheight);
-//    /**
-//     * draws the sustaining beats of a note
-//     */
-//    g2.setColor(Color.GREEN);
-//    g2.fillRect(((startGridX + (note.getStartBeat()) * rectwidth) + rectwidth),
-//            startGridY + (maxPitch - note.getPitchIdx()) * rectheight,
-//            rectwidth * (note.getEndBeat() - note.getStartBeat() - 1),
-//            rectheight);
   }
 
   /**
@@ -196,11 +182,11 @@ public class ConcreteGuiViewPanel extends JPanel {
     }
   }
 
-  class MyLine {
-    int beginX;
-    int beginY;
-    int endX;
-    int endY;
+  public class MyLine {
+    public int beginY;
+    public int endX;
+    public int endY;
+    public int beginX;
 
     public MyLine(int x1, int y1, int x2, int y2) {
       this.beginX = x1 - 20;
@@ -219,6 +205,10 @@ public class ConcreteGuiViewPanel extends JPanel {
         beginX = beginX + 20;
         endX = endX + 20;
       }
+    }
+
+    public void adjustLine() {
+      this.endY = 40 + (model.getHighPitch() - model.getLowPitch() + 1) * 20;
     }
 
     @Override

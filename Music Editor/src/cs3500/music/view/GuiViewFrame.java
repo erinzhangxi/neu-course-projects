@@ -41,6 +41,10 @@ public class GuiViewFrame extends JFrame implements GuiView {
     line = displayPanel.getLine();
   }
 
+  /**
+   * Determines if the red line moves to the end of the window
+   * scroll to the next window and red line starts from the beginning of new window
+   */
   public void nextWindowIfEnd() {
     if (line.beginX % 1300 == 0) {
       this.scroll.getHorizontalScrollBar().setValue(1300 * (line.beginX / 1300));
@@ -57,6 +61,9 @@ public class GuiViewFrame extends JFrame implements GuiView {
     return new Dimension(1300, 800);
   }
 
+  /**
+   * @return music editor model implementation
+   */
   public MusicEditorImpl getModelFromFrame() {
     return new MusicEditorImpl(model.getAll());
   }
@@ -118,19 +125,38 @@ public class GuiViewFrame extends JFrame implements GuiView {
     this.displayPanel.addKeyListener(keyboard);
   }
 
+  /**
+   * reset focus on the frame
+   */
   public void resetFocus() {
     displayPanel.setFocusable(true);
     displayPanel.requestFocus();
   }
 
+  /**
+   *
+   * @return the GuiViewPanel
+   */
+  @Override
   public ConcreteGuiViewPanel getPanel() {
     return this.displayPanel;
   }
 
+  /**
+   *
+   * @return pause state
+   */
   public boolean getPauseState() {
     return this.paused;
   }
 
+  /**
+   *
+   * @param x x coordinate of a mouse event
+   * @param y y coordinate of a mouse event
+   * @param duration the length of a note that needs to be added
+   */
+  @Override
   public void addNoteFromXandY(int x, int y, int duration) {
     int noteBeat = ((x - displayPanel.startGridX) / displayPanel.rectwidth);
     int notePitch = model.getHighPitch() - ((y - displayPanel.startGridY) /
@@ -138,24 +164,39 @@ public class GuiViewFrame extends JFrame implements GuiView {
     Note note = new NoteImpl(Pitch.getPitch(notePitch % 12), notePitch / 12,
             noteBeat, noteBeat + duration, 1, 64);
     model.addNote(note);
+    getPanel().getLine().adjustLine();
   }
 
-  public void removeNoteFromXandY(int x, int y) {
-    int noteBeat = ((x - displayPanel.startGridX) / displayPanel.rectwidth);
-    int notePitch = model.getHighPitch() - ((y - displayPanel.startGridY) /
+  /**
+   * Remove a note given the note's x and y coordinate
+   * @param x5 x coordinate of a mouse event
+   * @param y5 y coordinate of a mouse event
+   */
+  @Override
+  public void removeNoteFromXandY(int x5, int y5) {
+    Note removeNote = getNote(x5, y5);
+    int duration = removeNote.getEndBeat() - removeNote.getStartBeat();
+    int noteBeat = ((x5 - displayPanel.startGridX) / displayPanel.rectwidth);
+    int notePitch = model.getHighPitch() - ((y5 - displayPanel.startGridY) /
             displayPanel.rectheight);
-    model.removeNote(notePitch, noteBeat);
+    model.removeNote(notePitch, noteBeat, duration);
+    getPanel().getLine().adjustLine();
   }
 
+  /**
+   * Given x and y coordinates of a mouse event, give back the corresponding note
+   * @param x x coordinate of a mouse event
+   * @param y y coordinate of a mouse event
+   * @return a Note
+   */
+  @Override
   public Note getNote(int x, int y) {
-    System.out.println("x is : " + x + " y is : " + y);  // TODO
     int noteBeat = ((x - displayPanel.startGridX) / displayPanel.rectwidth);
     int notePitch = model.getHighPitch() - ((y - displayPanel.startGridY) /
             displayPanel.rectheight);
     Note newNote = null;
     for (Note n : model.getAll()) {
       if ((n.getPitchIdx() == notePitch) && (n.getStartBeat() == noteBeat)) {
-        System.out.println(n.getPitchIdx() + "  " + n.getStartBeat());//TODO
         newNote = n;
       }
     }
@@ -165,6 +206,26 @@ public class GuiViewFrame extends JFrame implements GuiView {
     return newNote;
   }
 
+
+  public void addNote(int x4, int y4, Note note) {
+    int noteStart = ((x4 - displayPanel.startGridX) / displayPanel.rectwidth);
+    int noteEnd = noteStart + (note.getEndBeat() - note.getStartBeat());
+    int notePitch = model.getHighPitch() - ((y4 - displayPanel.startGridY) /
+            displayPanel.rectheight);
+    Note newNote = new NoteImpl(Pitch.getPitch(notePitch % 12), notePitch / 12,
+            noteStart, noteEnd, 1, 64);
+    model.addNote(newNote);
+    getPanel().getLine().adjustLine();
+  }
+
+  /**
+   *
+   * @param mouse mouse handler
+   */
   public void removeMouseHandler(MouseHandler mouse) {}
 
+  @Override
+  public void changePauseValue() {
+    this.paused = !this.paused;
+  }
 }

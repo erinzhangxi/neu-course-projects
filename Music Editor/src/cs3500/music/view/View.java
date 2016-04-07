@@ -2,9 +2,6 @@ package cs3500.music.view;
 
 import javax.sound.midi.InvalidMidiDataException;
 
-import cs3500.music.controller.Controller;
-import cs3500.music.model.MusicEditorImpl;
-
 /**
  * Created by ErinZhang on 3/17/16.
  */

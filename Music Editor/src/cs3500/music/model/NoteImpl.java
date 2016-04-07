@@ -30,6 +30,10 @@ public class NoteImpl implements Note {
    */
   private int volume;
 
+  public NoteImpl() {
+
+  }
+
   /**
    * @param pitch a tone can be one of the twelve pitches: C C♯ D D♯ E F F♯ G G♯ A A♯ B
    * @param octave contains twelve distinct pitches.
@@ -41,7 +45,7 @@ public class NoteImpl implements Note {
    *                   of (0, 126)
    * @param volume integer representing the volume
    */
-  public NoteImpl(Pitch pitch, int octave, int start, int end, int instrument, int volume) {  // TODO change to private
+  public NoteImpl(Pitch pitch, int octave, int start, int end, int instrument, int volume) {
 
     if (octave < -1 || octave > 10) {
       throw new IllegalArgumentException("Octave must be between 0 and 10.");
