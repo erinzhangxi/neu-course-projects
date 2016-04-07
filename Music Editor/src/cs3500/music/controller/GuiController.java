@@ -1,5 +1,6 @@
 package cs3500.music.controller;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.Scanner;
@@ -153,7 +154,6 @@ public class GuiController implements IController {
    */
   class MoveNote1 implements Runnable {
     public void run() {
-
       if (status == Status.Move1) {
         tempNote = new NoteImpl();
         int x1 = mouse.getPressedEvent().getX();

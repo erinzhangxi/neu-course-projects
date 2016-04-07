@@ -25,12 +25,12 @@ public class ConcreteGuiViewPanel extends JPanel {
 
   int startGridX = 80;
   int startGridY = 40;
+
   /**
    * the width of a rectangle representing one beat of a note
    */
   int rectwidth = 20;
 
-  Timer timer;
   /**
    * the height of a rectangle representing one beat of a note
    */
@@ -148,12 +148,27 @@ public class ConcreteGuiViewPanel extends JPanel {
     return new MusicEditorImpl(model.getAll());
   }
 
+
+  /**
+   * Note object represented by a rectangle with black rectangle representing the first beat
+   * and the green rectangle representing the rest
+   */
   class MyRectangle {
     int x;
     int y;
     int height;
     int width;
     Note note;
+
+    /**
+     * Constructs a rectangle representation of a note.
+     *
+     * @param note    note being drawn
+     * @param x       x coordinate of the rectangle start
+     * @param y       y coordinate of the rectangle start
+     * @param width   rectangle width
+     * @param height  rectangle height
+     */
     public MyRectangle(Note note, int x, int y, int width, int height) {
       this.x = x;
       this.y = y;
@@ -162,11 +177,12 @@ public class ConcreteGuiViewPanel extends JPanel {
       this.note = note;
     }
 
-    public void changePosition(int newX, int newY) {
-      x = newX;
-      y = newY;
-    }
-
+    /**
+     * Draws the rectangle representing a note
+     *
+     * @param g2        Graphics component
+     * @param maxPitch  max pitch of the model
+     */
     public void draw(Graphics g2, int maxPitch) {
       /**
        * draws the first beat of a note
@@ -182,6 +198,9 @@ public class ConcreteGuiViewPanel extends JPanel {
     }
   }
 
+  /**
+   * Defines the line object which we use to track the song
+   */
   public class MyLine {
     public int beginY;
     public int endX;
@@ -195,26 +214,33 @@ public class ConcreteGuiViewPanel extends JPanel {
       this.endY = y2;
     }
 
+    /**
+     * Generates the red line
+     *
+     * @param g2 Graphics component
+     */
     public void makeLine(Graphics g2) {
       g2.setColor(Color.RED);
-      //g2.drawLine(startGridX, startGridY, 80, 40 + (maxPitch - minPitch + 1) * 20);
       g2.drawLine(beginX, beginY, endX, endY);
     }
-    public void moveLine() {
+
+    /**
+     * Moves the line to the current beat
+     *
+     * @param beat current beat played
+     */
+    public void moveLine(int beat) {
       if (beginX < (model.getHighBeat()*20 + startGridX)) {
-        beginX = beginX + 20;
-        endX = endX + 20;
+        beginX = 60 + beat * 20;
+        endX = beginX;
       }
     }
 
+    /**
+     * Adjusts the line to the size of the grid in case the pitch range expands
+     */
     public void adjustLine() {
       this.endY = 40 + (model.getHighPitch() - model.getLowPitch() + 1) * 20;
     }
-
-    @Override
-    public String toString() {
-      return this.beginX + " " + this.endX;
-    }
   }
-
 }

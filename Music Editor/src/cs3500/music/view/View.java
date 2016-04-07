@@ -11,5 +11,9 @@ public interface View {
    */
   void display() throws InterruptedException;
 
+  /**
+   * Pause the music/view
+   * @throws InvalidMidiDataException
+   */
   void pause() throws InvalidMidiDataException;
 }

@@ -46,8 +46,9 @@ public class GuiViewFrame extends JFrame implements GuiView {
    * scroll to the next window and red line starts from the beginning of new window
    */
   public void nextWindowIfEnd() {
-    if (line.beginX % 1300 == 0) {
-      this.scroll.getHorizontalScrollBar().setValue(1300 * (line.beginX / 1300));
+    if (line.beginX % this.getBounds().width < 40) {
+      this.scroll.getHorizontalScrollBar().setValue(this.getBounds().width *
+              (line.beginX / this.getBounds().width));
     }
   }
 
@@ -167,11 +168,6 @@ public class GuiViewFrame extends JFrame implements GuiView {
     getPanel().getLine().adjustLine();
   }
 
-  /**
-   * Remove a note given the note's x and y coordinate
-   * @param x5 x coordinate of a mouse event
-   * @param y5 y coordinate of a mouse event
-   */
   @Override
   public void removeNoteFromXandY(int x5, int y5) {
     Note removeNote = getNote(x5, y5);
@@ -205,7 +201,6 @@ public class GuiViewFrame extends JFrame implements GuiView {
     }
     return newNote;
   }
-
 
   public void addNote(int x4, int y4, Note note) {
     int noteStart = ((x4 - displayPanel.startGridX) / displayPanel.rectwidth);

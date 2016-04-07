@@ -1,5 +1,6 @@
 package cs3500.music.view;
 
+import java.awt.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -54,72 +55,58 @@ public class CombinedViewImpl implements CombinedView {
     }
   }
 
-  @Override
   public void changePauseValue() {
     this.paused = !this.paused;
   }
 
-  @Override
   public void addNoteFromXandY(int x, int y, int duration) {
     this.gui.addNoteFromXandY(x, y, duration);
   }
 
-  @Override
   public void repaint() {
     this.gui.repaint();
   }
 
-  @Override
   public void removeNoteFromXandY(int x, int y) {
     this.gui.removeNoteFromXandY(x, y);
   }
 
-  @Override
   public Note getNote(int x1, int y1) {
     return this.gui.getNote(x1, y1);
   }
 
-  @Override
   public void addNote(int x2, int y2, Note tempNote) {
     this.gui.addNote(x2, y2, tempNote);
   }
 
-  @Override
   public ConcreteGuiViewPanel getPanel() {
     return this.gui.getPanel();
   }
 
-  @Override
   public void end() {
     this.gui.end();
   }
 
-  @Override
   public void home() {
     this.gui.home();
   }
 
-  @Override
   public void scrollUp() {
     this.gui.scrollUp();
   }
 
-  @Override
   public void scrollDown() {
     this.gui.scrollDown();
   }
 
-  @Override
   public void scrollLeft() {
     this.gui.scrollLeft();
   }
 
-  @Override
   public void scrollRight() {
     this.gui.scrollRight();
   }
 
-  @Override
   public void addKeyboardListener(KeyboardHandler key) {
     this.keyboard = key;
     this.gui.addKeyboardListener(keyboard);
@@ -142,26 +129,27 @@ public class CombinedViewImpl implements CombinedView {
   public void initTimer() {
     timer = new Timer();
     timer.schedule(new Task(), 0, model.getTempo() / 1000);
-    // this.receiver.close(); // Only call this once you're done playing *all* notes
   }
 
+  /**
+   * Task executing midi and gui view operation at the current beat
+   */
   class Task extends TimerTask {
-    // the actual action to be performed
     public void run() {
       if (paused == false) {
-        // play the current beat you're on
         try {
           if (curBeat <= model.getHighBeat()) {
             midi.playNotesAtBeat(curBeat);
           }
+          else {
+            paused = true;
+          }
         } catch (Exception e) {
 
         }
-
-        gui.getPanel().getLine().moveLine();
+        gui.getPanel().line.moveLine(curBeat);
         gui.repaint();
         gui.nextWindowIfEnd();
-        // increment the current beat
         curBeat++;
       }
       else {

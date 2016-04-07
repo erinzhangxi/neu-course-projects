@@ -22,27 +22,50 @@ public class MouseHandler implements MouseListener {
     this.releasedMouse = new HashMap<>();
   }
 
+  /**
+   *
+   * @return current mouse clicked event
+   */
   public MouseEvent getCurEvent() {
     return this.curEvent;
   }
 
+  /**
+   *
+   * @return current mouse pressed event
+   */
   public MouseEvent getPressedEvent() {
     return this.pressed;
   }
 
+  /**
+   *
+   * @return current mouse released event
+   */
   public MouseEvent getReleasedEvent() {
     return this.released;
   }
 
-
+  /**
+   *
+   * @return Map of clicked mouse events
+   */
   public Map<Integer, Runnable> getClickedMouse() {
     return this.clickedMouse;
   }
 
+  /**
+   *
+   * @return Map of mouse pressed events
+   */
   public Map<Integer, Runnable> getPressedMouse() {
     return this.pressedMouse;
   }
 
+  /**
+   *
+   * @return Map of mouse pressed events
+   */
   public Map<Integer, Runnable> getReleasedMouse() {
     return this.releasedMouse;
   }
@@ -76,13 +99,11 @@ public class MouseHandler implements MouseListener {
 
   @Override
   public void mouseEntered(MouseEvent e) {
-    curEvent = e;
   // do nothing
   }
 
   @Override
   public void mouseExited(MouseEvent e) {
-    curEvent = e;
   // do nothing
   }
 }

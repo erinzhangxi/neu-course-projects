@@ -7,7 +7,7 @@ import cs3500.music.model.MusicEditorImpl;
 import cs3500.music.model.Note;
 
 /**
- * Created by Ivana on 3/18/2016.
+ * Created by Marija on 3/18/2016.
  */
 public class ViewCreator {
 
