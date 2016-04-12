@@ -167,7 +167,6 @@ public class MidiViewImpl implements MidiView {
   class Task extends TimerTask {
     // the actual action to be performed
     public void run() {
-
       // play the current beat you're on
       try {
         if (curBeat <= model.getHighBeat()) {
