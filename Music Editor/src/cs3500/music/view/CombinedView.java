@@ -1,6 +1,6 @@
 package cs3500.music.view;
 
-import javax.sound.midi.InvalidMidiDataException;
+        import javax.sound.midi.InvalidMidiDataException;
 
 /**
  * Created by ErinZhang on 3/17/16.

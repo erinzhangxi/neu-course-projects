@@ -78,7 +78,6 @@ public class ConcreteGuiViewPanel extends JPanel {
     for (Note n : song.getAll()) {
       this.paintNote(n, g2, song.getHighPitch());
     }
-
   }
 
   /**
