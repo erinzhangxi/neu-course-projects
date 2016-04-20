@@ -15,6 +15,7 @@ import javax.sound.midi.ShortMessage;
 import javax.sound.midi.Synthesizer;
 
 import cs3500.music.model.MusicEditorImpl;
+import cs3500.music.model.MusicEditorModel;
 import cs3500.music.model.Note;
 
 /**
@@ -23,7 +24,7 @@ import cs3500.music.model.Note;
 public class MidiViewImpl implements MidiView {
   private Synthesizer synth;
   private Receiver receiver;
-  private MusicEditorImpl model;
+  private MusicEditorModel model;
   private MockRec mockRec;
   private MockSyn mockSyn;
   private Appendable log;
@@ -36,7 +37,7 @@ public class MidiViewImpl implements MidiView {
    * constructor
    * @param model a music editor implementation
   */
-  public MidiViewImpl(MusicEditorImpl model) {
+  public MidiViewImpl(MusicEditorModel model) {
     try {
       synth = MidiSystem.getSynthesizer();
       receiver = synth.getReceiver();

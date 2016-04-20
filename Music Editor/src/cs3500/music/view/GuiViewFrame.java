@@ -9,6 +9,7 @@ import java.util.List;
 import cs3500.music.controller.KeyboardHandler;
 import cs3500.music.controller.MouseHandler;
 import cs3500.music.model.MusicEditorImpl;
+import cs3500.music.model.MusicEditorModel;
 import cs3500.music.model.Note;
 import cs3500.music.model.NoteImpl;
 import cs3500.music.model.Pitch;
@@ -20,7 +21,7 @@ public class GuiViewFrame extends JFrame implements GuiView {
 
   private ConcreteGuiViewPanel displayPanel; // You may want to refine this to a subtype of JPanel
   private List<Note> notes = new ArrayList<>();
-  private MusicEditorImpl model = new MusicEditorImpl(notes);
+  private MusicEditorModel model = new MusicEditorImpl(notes);
   private JScrollPane scroll;
   private KeyboardHandler keyboard = new KeyboardHandler();
   private MouseHandler mouse = new MouseHandler();
@@ -30,9 +31,9 @@ public class GuiViewFrame extends JFrame implements GuiView {
   /**
    * Creates a new GuiView
    */
-  public GuiViewFrame(MusicEditorImpl newSong) {
+  public GuiViewFrame(MusicEditorModel newSong) {
     this.model = newSong;
-    this.displayPanel = new ConcreteGuiViewPanel(newSong);
+    this.displayPanel = new ConcreteGuiViewPanel((MusicEditorImpl) newSong);
     scroll = new JScrollPane(displayPanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
             JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
     this.getContentPane().add(scroll);

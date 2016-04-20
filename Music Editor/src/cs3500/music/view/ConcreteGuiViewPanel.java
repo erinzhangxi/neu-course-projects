@@ -9,6 +9,7 @@ import javax.sound.sampled.Line;
 import javax.swing.*;
 
 import cs3500.music.model.MusicEditorImpl;
+import cs3500.music.model.MusicEditorModel;
 import cs3500.music.model.Note;
 
 import static cs3500.music.model.Pitch.getPitchName;
@@ -20,7 +21,7 @@ public class ConcreteGuiViewPanel extends JPanel {
 
 
   List<Note> notes = new ArrayList<>();
-  MusicEditorImpl model = new MusicEditorImpl(notes);
+  MusicEditorModel model = new MusicEditorImpl(notes);
 
 
   int startGridX = 80;
@@ -62,7 +63,7 @@ public class ConcreteGuiViewPanel extends JPanel {
     if (g instanceof Graphics2D) {
       super.paintComponent(g);
       Graphics2D g2 = (Graphics2D)g;
-      this.paintNotes(model, g2);
+      this.paintNotes((MusicEditorImpl) model, g2);
       this.paintGrid(model.getLowBeat(),model.getHighBeat(),model.getLowPitch(),
               model.getHighPitch(), g2);
     }

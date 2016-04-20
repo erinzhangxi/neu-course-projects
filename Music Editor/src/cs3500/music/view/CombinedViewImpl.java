@@ -19,14 +19,14 @@ import cs3500.music.model.Note;
 public class CombinedViewImpl implements CombinedView {
   public GuiViewFrame gui;
   public MidiViewImpl midi;
-  public MusicEditorImpl model;
+  public MusicEditorModel model;
   KeyboardHandler keyboard = new KeyboardHandler();
   MouseHandler mouse = new MouseHandler();
   private Timer timer = new Timer();
   private int curBeat;
   public boolean paused;
 
-  public CombinedViewImpl(MusicEditorImpl model) {
+  public CombinedViewImpl(MusicEditorModel model) {
     this.gui = new GuiViewFrame(model);
     this.midi = new MidiViewImpl(model);
     this.model = model;
