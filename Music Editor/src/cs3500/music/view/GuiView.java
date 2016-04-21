@@ -1,5 +1,8 @@
 package cs3500.music.view;
 
+import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
+
 import javax.sound.midi.InvalidMidiDataException;
 
 import cs3500.music.controller.KeyboardHandler;
@@ -48,14 +51,14 @@ public interface GuiView extends View {
    * add the keylistener to the view
    * @param key
    */
-  void addKeyboardListener(KeyboardHandler key);
+  void addKeyboardListener(KeyListener key);
 
   /**
    * Add the mouselistener to the view.
    *
    * @param mouse
    */
-  void addMouseListener(MouseHandler mouse);
+  void addMouseListener(MouseListener mouse);
 
   /**
    * Reset the focus of frame.

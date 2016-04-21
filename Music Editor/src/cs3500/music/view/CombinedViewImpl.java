@@ -1,6 +1,9 @@
 package cs3500.music.view;
 
 import java.awt.*;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -20,8 +23,8 @@ public class CombinedViewImpl implements CombinedView {
   public GuiViewFrame gui;
   public MidiViewImpl midi;
   public MusicEditorModel model;
-  KeyboardHandler keyboard = new KeyboardHandler();
-  MouseHandler mouse = new MouseHandler();
+  private KeyListener keyboard = new KeyboardHandler();
+  private MouseListener mouse = new MouseHandler();
   private Timer timer = new Timer();
   private int curBeat;
   public boolean paused;
@@ -40,6 +43,7 @@ public class CombinedViewImpl implements CombinedView {
   public MidiViewImpl getMidi() {
     return this.midi;
   }
+
   @Override
   public void display() throws InterruptedException {
     gui.display();
@@ -107,12 +111,12 @@ public class CombinedViewImpl implements CombinedView {
     this.gui.scrollRight();
   }
 
-  public void addKeyboardListener(KeyboardHandler key) {
+  public void addKeyboardListener(KeyListener key) {
     this.keyboard = key;
     this.gui.addKeyboardListener(keyboard);
   }
 
-  public void addMouseListener(MouseHandler mouse) {
+  public void addMouseListener(MouseListener mouse) {
     this.mouse = mouse;
     this.gui.addMouseListener(mouse);
   }

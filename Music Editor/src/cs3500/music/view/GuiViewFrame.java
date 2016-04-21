@@ -3,6 +3,8 @@ package cs3500.music.view;
 import java.awt.*;
 import javax.swing.*;
 
+import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
 import java.util.*;
 import java.util.List;
 
@@ -23,8 +25,8 @@ public class GuiViewFrame extends JFrame implements GuiView {
   private List<Note> notes = new ArrayList<>();
   private MusicEditorModel model = new MusicEditorImpl(notes);
   private JScrollPane scroll;
-  private KeyboardHandler keyboard = new KeyboardHandler();
-  private MouseHandler mouse = new MouseHandler();
+  private KeyListener keyboard = new KeyboardHandler();
+  private MouseListener mouse = new MouseHandler();
   public boolean paused = false;
   public ConcreteGuiViewPanel.MyLine line;
 
@@ -116,13 +118,13 @@ public class GuiViewFrame extends JFrame implements GuiView {
   }
 
   @Override
-  public void addMouseListener(MouseHandler mouse) {
+  public void addMouseListener(MouseListener mouse) {
     this.mouse = mouse;
     this.displayPanel.addMouseListener(mouse);
   }
 
   @Override
-  public void addKeyboardListener(KeyboardHandler key) {
+  public void addKeyboardListener(KeyListener key) {
     this.keyboard = key;
     this.displayPanel.addKeyListener(keyboard);
   }
