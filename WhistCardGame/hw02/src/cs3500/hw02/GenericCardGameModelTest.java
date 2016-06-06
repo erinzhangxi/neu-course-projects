@@ -1,20 +1,19 @@
 package cs3500.hw02;
 
-import static org.junit.Assert.*;
 import org.junit.Test;
 
-import java.io.Reader;
 import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Arrays;
-import static cs3500.hw02.StandardCard.Rank;
-import static cs3500.hw02.StandardCard.Suit;
 import java.util.Comparator;
+import java.util.List;
 
 import cs3500.hw03.WhistController;
 import cs3500.hw03.WhistModel;
+
+import static cs3500.hw02.StandardCard.Rank;
+import static cs3500.hw02.StandardCard.Suit;
+import static org.junit.Assert.assertEquals;
 
 
 /**
@@ -1477,16 +1476,16 @@ public class GenericCardGameModelTest {
 
 
 //
-//  /** *controller* handles exception*/
-//  @Test (expected = IllegalArgumentException.class)
-//  public void testStartGameException1() {
-//    StringReader rd = new StringReader("2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0" +
-//           " 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0");
-//    StringBuffer ap = new StringBuffer();
-//    WhistController W1 = new WhistController(rd, ap);
-//    WhistModel G1 = new WhistModel();
-//    W1.startGame(G1, 4);
-//  }
+  /** *controller* handles exception*/
+  @Test (expected = IllegalArgumentException.class)
+  public void testStartGameException1() {
+    StringReader rd = new StringReader("2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0" +
+           " 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0");
+    StringBuffer ap = new StringBuffer();
+    WhistController W1 = new WhistController(rd, ap);
+    WhistModel G1 = new WhistModel();
+    W1.startGame(G1, 4);
+  }
 
   /** when there is no player */
   @Test (expected = IllegalArgumentException.class)

@@ -6,7 +6,6 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import cs3500.hw02.StandardCard;
-import cs3500.hw02.StandardCardComparator;
 
 /**
  * This Whist controller should accept and store Readable and Appendable for doing input and output.
@@ -37,8 +36,6 @@ public class WhistController implements IWhistController {
   }
 
   private void run() {
-
-
     while (!cardGame.isGameOver()) {
       try {
 
@@ -129,6 +126,109 @@ public class WhistController implements IWhistController {
 
   }
 }
+
+//package cs3500.hw03;
+//
+//        import java.io.IOException;
+//        import java.io.InputStreamReader;
+//        import java.util.List;
+//        import java.util.Objects;
+//        import java.util.Scanner;
+//
+//        import cs3500.hw03.CardGameModel;
+//        import cs3500.hw03.WhistModel;
+//        import cs3500.hw02.Card;
+//        import cs3500.hw04.WhistTrumpModel;
+//
+//public class WhistController implements IWhistController {
+//
+//    final Readable in;
+//    final Appendable out;
+//
+//    public WhistController(Readable in, Appendable out) {
+//        this.in = in;
+//        this.out = out;
+//      }
+//
+//    public <K> void startGame(CardGameModel<K> game, int numPlayers){
+//        List<K> deck = game.getDeck();
+//        game.startPlay(numPlayers, deck);
+//        Scanner scan = new Scanner(in);
+//        try {
+//            out.append(game.getGameState());
+//          } catch (IOException e) {
+//            e.printStackTrace();
+//          }
+//
+//
+//        while (!game.isGameOver()) {
+//
+//            try {
+//                out.append(System.lineSeparator() + "Card: ");
+//              } catch (IOException e) {
+//                e.printStackTrace();
+//              }
+//            int cardIdx;
+//            while (!scan.hasNext()) {
+//                scan.next();
+//              }
+//            String in = scan.next();
+//            try {
+//                cardIdx = Integer.parseInt(in);
+//              }
+//            catch (NumberFormatException e) {
+//                try {
+//                    out.append("Invalid input: " + in);
+//                  } catch (IOException el) {
+//                    el.printStackTrace();
+//                  }
+//                continue;
+//              }
+//
+//            try {
+//                game.play(game.getCurrentPlayer(), cardIdx);
+//              }
+//
+//            catch(IllegalArgumentException e) {
+//                try {
+//                    out.append("Invalid index :" + cardIdx + " Play again\n" );
+//                  } catch(IOException el) {
+//                    el.printStackTrace();
+//                  }
+//                continue;
+//              }
+//            try {
+//                out.append(game.getGameState() + "\n");
+//              } catch (IOException e) {
+//                e.printStackTrace();
+//              }
+//          }
+//
+////    try {
+////      out.append(game.getGameState());
+////    } catch (IOException e) {
+////      e.printStackTrace();
+////    }
+//
+//
+//      }
+//
+//
+//
+//
+//
+//
+//    public static void main(String[] args){
+//
+//        Scanner scan=new Scanner(System.in);
+//        WhistController whistController =
+//                new WhistController(new InputStreamReader(System.in), System.out);
+//        CardGameModel game = new WhistModel();
+//        CardGameModel game1 = new WhistTrumpModel();
+//        whistController.startGame(game1, 5);
+//
+//      }
+//}
 
 
 
