@@ -26,7 +26,8 @@ public interface CompositionBuilder<T> {
    * @param start The start time of the note, in beats
    * @param end The end time of the note, in beats
    * @param instrument The instrument number (to be interpreted by MIDI)
-   * @param pitch The pitch (in the range [0, 127], where 60 represents C4, the middle-C on a piano)
+   * @param pitch The pitch (in the range [0, 127], where 60 represents C4, the middle-C on a
+   *              piano)
    * @param volume The volume (in the range [0, 127])
    * @return
    */

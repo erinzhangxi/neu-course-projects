@@ -1,12 +1,15 @@
 package cs3500.music.view;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sound.sampled.Line;
 import javax.swing.*;
 
 import cs3500.music.model.MusicEditorImpl;
+import cs3500.music.model.MusicEditorModel;
 import cs3500.music.model.Note;
 
 import static cs3500.music.model.Pitch.getPitchName;
@@ -18,18 +21,22 @@ public class ConcreteGuiViewPanel extends JPanel {
 
 
   List<Note> notes = new ArrayList<>();
-  MusicEditorImpl model = new MusicEditorImpl(notes);
+  MusicEditorModel model = new MusicEditorImpl(notes);
+
 
   int startGridX = 80;
   int startGridY = 40;
+
   /**
    * the width of a rectangle representing one beat of a note
    */
   int rectwidth = 20;
+
   /**
    * the height of a rectangle representing one beat of a note
    */
   int rectheight = 20;
+  MyLine line;
 
   /**
    * Constructs a panel part of the view given the MusicEditorImpl model
@@ -38,6 +45,12 @@ public class ConcreteGuiViewPanel extends JPanel {
    */
   public ConcreteGuiViewPanel(MusicEditorImpl model) {
     this.model = model;
+    line = new MyLine(startGridX, startGridY, 80, 40 + (model.getHighPitch() -
+            model.getLowPitch() + 1) * 20);
+  }
+
+  public MyLine getLine() {
+    return this.line;
   }
 
   /**
@@ -47,11 +60,12 @@ public class ConcreteGuiViewPanel extends JPanel {
    */
   @Override
   public void paintComponent(Graphics g) {
-    if(g instanceof Graphics2D)
-    {
+    if (g instanceof Graphics2D) {
       super.paintComponent(g);
       Graphics2D g2 = (Graphics2D)g;
-      this.paintNotes(model, g2);
+      this.paintNotes((MusicEditorImpl) model, g2);
+      this.paintGrid(model.getLowBeat(),model.getHighBeat(),model.getLowPitch(),
+              model.getHighPitch(), g2);
     }
   }
 
@@ -65,8 +79,6 @@ public class ConcreteGuiViewPanel extends JPanel {
     for (Note n : song.getAll()) {
       this.paintNote(n, g2, song.getHighPitch());
     }
-    this.paintGrid(song.getLowBeat(),song.getHighBeat(),song.getLowPitch(),
-            song.getHighPitch(), g2);
   }
 
   /**
@@ -77,20 +89,9 @@ public class ConcreteGuiViewPanel extends JPanel {
    * @param maxPitch  max pitch of the piece
    */
   public void paintNote(Note note, Graphics2D g2, int maxPitch) {
-    /**
-     * draws the first beat of a note
-     */
-    g2.setColor(Color.BLACK);
-    g2.fillRect(startGridX + (note.getStartBeat()) * rectwidth, startGridY
-            + (maxPitch - note.getPitchIdx()) * rectheight, rectwidth, rectheight);
-    /**
-     * draws the sustaining beats of a note
-     */
-    g2.setColor(Color.GREEN);
-    g2.fillRect(((startGridX + (note.getStartBeat()) * rectwidth) + rectwidth),
-            startGridY + (maxPitch - note.getPitchIdx()) * rectheight,
-            rectwidth * (note.getEndBeat() - note.getStartBeat() - 1),
-            rectheight);
+    MyRectangle newRect = new MyRectangle(note, startGridX + (note.getStartBeat()) * rectwidth,
+            startGridY + (maxPitch - note.getPitchIdx()) * rectheight, rectwidth, rectheight);
+    newRect.draw(g2, maxPitch);
   }
 
   /**
@@ -129,8 +130,7 @@ public class ConcreteGuiViewPanel extends JPanel {
       }
       y += 20;
     }
-    g2.setColor(Color.RED);
-    g2.drawLine(startGridX, startGridY, 80, 40 + (maxPitch - minPitch + 1) * 20);
+    line.makeLine(g2);
   }
 
   @Override
@@ -148,4 +148,99 @@ public class ConcreteGuiViewPanel extends JPanel {
     return new MusicEditorImpl(model.getAll());
   }
 
+
+  /**
+   * Note object represented by a rectangle with black rectangle representing the first beat
+   * and the green rectangle representing the rest
+   */
+  class MyRectangle {
+    int x;
+    int y;
+    int height;
+    int width;
+    Note note;
+
+    /**
+     * Constructs a rectangle representation of a note.
+     *
+     * @param note    note being drawn
+     * @param x       x coordinate of the rectangle start
+     * @param y       y coordinate of the rectangle start
+     * @param width   rectangle width
+     * @param height  rectangle height
+     */
+    public MyRectangle(Note note, int x, int y, int width, int height) {
+      this.x = x;
+      this.y = y;
+      this.width = width;
+      this.height = height;
+      this.note = note;
+    }
+
+    /**
+     * Draws the rectangle representing a note
+     *
+     * @param g2        Graphics component
+     * @param maxPitch  max pitch of the model
+     */
+    public void draw(Graphics g2, int maxPitch) {
+      /**
+       * draws the first beat of a note
+       */
+      g2.setColor(Color.BLACK);
+      g2.fillRect(x, y, width, height);
+      /**
+       * draws the sustaining beats of a note
+       */
+      g2.setColor(Color.GREEN);
+      g2.fillRect((x + rectwidth), y, rectwidth * (note.getEndBeat() - note.getStartBeat() - 1),
+              height);
+    }
+  }
+
+  /**
+   * Defines the line object which we use to track the song
+   */
+  public class MyLine {
+    public int beginY;
+    public int endX;
+    public int endY;
+    public int beginX;
+
+    public MyLine(int x1, int y1, int x2, int y2) {
+      this.beginX = x1 - 20;
+      this.beginY = y1;
+      this.endX = x2 - 20;
+      this.endY = y2;
+    }
+
+    /**
+     * Generates the red line
+     *
+     * @param g2 Graphics component
+     */
+    public void makeLine(Graphics g2) {
+      g2.setColor(Color.RED);
+      g2.drawLine(beginX, beginY, endX, endY);
+    }
+
+    /**
+     * Moves the line to the current beat
+     *
+     * @param beat current beat played
+     */
+    public void moveLine(int beat) {
+      if (beginX < (model.getHighBeat()*20 + startGridX)) {
+        beginX = 60 + beat * 20;
+        endX = beginX;
+      }
+    }
+
+    /**
+     * Adjusts the line to the size of the grid in case the pitch range expands
+     */
+    public void adjustLine() {
+      this.endY = 40 + (model.getHighPitch() - model.getLowPitch() + 1) * 20;
+    }
+  }
 }

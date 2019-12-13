@@ -119,4 +119,18 @@ public interface MusicEditorModel {
    * @return index of lowest beat, cannot be below 0
    */
   int getLowBeat();
+
+  /**
+   *
+   * @return all notes in the model
+   */
+  List<Note> getAll();
+
+  /**
+   * remove a note given the specific note
+   * @param pitchIdx
+   * @param startBeat the beat when the note starts
+   * @param duration how many beats the note lasts
+   */
+  void removeNote(int pitchIdx, int startBeat, int duration);
 }
